@@ -1,0 +1,32 @@
+aid: open-government-new-south-wales
+name: Open Government, New South Wales
+description: "New South Wales Government Open Data"
+url: https://api.nsw.gov.au/
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Government"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Government
+  - Public APIs
+apis:
+  - name: Open Government, New South Wales
+    description: "New South Wales Government Open Data"
+    humanURL: https://api.nsw.gov.au/
+    baseURL: https://api.nsw.gov.au/
+    tags:
+      - Government
+    properties:
+      - type: Documentation
+        url: https://api.nsw.gov.au/
+common:
+  - type: Website
+    url: https://api.nsw.gov.au/
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
