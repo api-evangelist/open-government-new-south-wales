@@ -23,6 +23,10 @@ apis:
       - type: Documentation
         url: https://api.nsw.gov.au/
 common:
+  - type: VulnerabilityDisclosure
+    url: security/open-government-new-south-wales-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/open-government-new-south-wales-domain-security.yml
   - type: Website
     url: https://api.nsw.gov.au/
   - type: PublicAPIsListing

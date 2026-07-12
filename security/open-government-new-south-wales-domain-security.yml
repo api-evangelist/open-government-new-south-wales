@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: api.nsw.gov.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  6 23:53:54 2026 GMT
+  hsts: false
+domains:
+- domain: nsw.gov.au
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
