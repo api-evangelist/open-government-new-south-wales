@@ -39,7 +39,6 @@ apis:
   - name: Open Government, New South Wales
     description: "New South Wales Government Open Data"
     humanURL: https://api.nsw.gov.au/
-    baseURL: https://api.nsw.gov.au/
     tags:
       - Government
     properties:
