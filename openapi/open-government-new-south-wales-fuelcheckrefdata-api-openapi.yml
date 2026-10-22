@@ -1,0 +1,443 @@
+openapi: 3.2.0
+info:
+  title: Open Government New South Wales Fuel Check Ref Data API
+  version: 2.0.05
+  contact: {}
+  description: 'Operations tagged FuelCheckRefData across 2 of this provider''s published API definitions: open-government-new-south-wales-fuel-swagger.json, open-government-new-south-wales-fuel-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.onegov.nsw.gov.au/
+tags:
+- name: FuelCheckRefData
+paths:
+  /FuelCheckRefData/v1/fuel/lovs:
+    get:
+      tags:
+      - FuelCheckRefData
+      description: Returns lists of reference data to be used in subsequent requests. It is recommended to execute this call in a separate api client as response can be over 2 mb. This API returns data for NSW.
+      summary: Get Reference Data
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: '''Bearer {token}'', where <b>{token}</b> is the value obtained from accesstoken call under security.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Content-Type should be 'application/json; charset=utf-8'
+        schema:
+          type: string
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      - name: transactionid
+        in: header
+        required: true
+        description: Unique ID of this call
+        schema:
+          type: string
+      - name: requesttimestamp
+        in: header
+        required: true
+        description: UTC date and time of request. Format dd/MM/yyyy hh:mm:ss AM/PM
+        schema:
+          type: string
+      - name: if-modified-since
+        in: header
+        required: true
+        description: UTC date and time of request. Format dd/MM/yyyy hh:mm:ss AM/PM
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reference_data'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+      operationId: getFuelCheckRefDataV1FuelLovs
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+  /FuelCheckRefData/v2/fuel/lovs:
+    get:
+      tags:
+      - FuelCheckRefData
+      description: Returns lists of reference data to be used in subsequent requests. It is recommended to execute this call in a separate api client as response can be over 2 mb. This API can return data for NSW and TAS.
+      summary: Get Reference Data
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: '''Bearer {token}'', where <b>{token}</b> is the value obtained from accesstoken call under security.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Content-Type should be 'application/json; charset=utf-8'
+        schema:
+          type: string
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      - name: transactionid
+        in: header
+        required: true
+        description: Unique ID of this call
+        schema:
+          type: string
+      - name: requesttimestamp
+        in: header
+        required: true
+        description: UTC date and time of request. Format dd/MM/yyyy hh:mm:ss AM/PM
+        schema:
+          type: string
+      - name: if-modified-since
+        in: header
+        required: true
+        description: UTC date and time of request. Format dd/MM/yyyy hh:mm:ss AM/PM
+        schema:
+          type: string
+      - name: states
+        in: query
+        required: false
+        description: A '|' delimited list of the states that you want a List of Values (LOVs) for, e.g. 'NSW|TAS' will give you the LOVs for NSW and TAS. Omitting this argument (or leaving it empty) will result in LOVs for NSW.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reference_data_v2'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+      operationId: getFuelCheckRefDataV2FuelLovs
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+components:
+  schemas:
+    reference_data_v2:
+      type: object
+      required:
+      - brands
+      - fueltypes
+      - stations
+      - trendperiods
+      - sortfields
+      - priceunits
+      - lastmodifiedtimestamps
+      properties:
+        brands:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                title: brand
+                required:
+                - name
+                - state
+                properties:
+                  name:
+                    type: string
+                  state:
+                    type: string
+                    example: NSW
+        fueltypes:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                title: fueltype
+                required:
+                - code
+                - name
+                - state
+                properties:
+                  code:
+                    type: string
+                    example: EV
+                  name:
+                    type: string
+                    example: EV charge
+                  state:
+                    type: string
+                    example: NSW
+        stations:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                title: station
+                type: object
+                required:
+                - brandid
+                - stationid
+                - brand
+                - code
+                - name
+                - address
+                - location
+                - state
+                properties:
+                  brandid:
+                    type: string
+                  stationid:
+                    type: string
+                  brand:
+                    type: string
+                  code:
+                    type: string
+                  name:
+                    type: string
+                  address:
+                    type: string
+                  location:
+                    type: object
+                    required:
+                    - latitude
+                    - longitude
+                    properties:
+                      latitude:
+                        type: number
+                        example: '-30.286083'
+                      longitude:
+                        type: number
+                        example: '153.124146'
+                  state:
+                    type: string
+                    example: NSW
+        trendperiods:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                title: trendperiod
+                required:
+                - period
+                - description
+                properties:
+                  period:
+                    type: string
+                    example: Day
+                  description:
+                    type: string
+                    example: Price trend today
+        sortfields:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                title: sortfield
+                required:
+                - code
+                - name
+                properties:
+                  code:
+                    type: string
+                    example: Distance
+                  name:
+                    type: string
+                    example: Sort results by distance from specified location
+    reference_data:
+      type: object
+      required:
+      - brands
+      - fueltypes
+      - stations
+      - trendperiods
+      - sortfields
+      - priceunits
+      - lastmodifiedtimestamps
+      properties:
+        brands:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                title: brand
+                required:
+                - name
+                properties:
+                  name:
+                    type: string
+        fueltypes:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                title: fueltype
+                required:
+                - code
+                - name
+                properties:
+                  code:
+                    type: string
+                    example: EV
+                  name:
+                    type: string
+                    example: EV charge
+        stations:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                title: station
+                type: object
+                required:
+                - brandid
+                - stationid
+                - brand
+                - code
+                - name
+                - address
+                - location
+                properties:
+                  brandid:
+                    type: string
+                  stationid:
+                    type: string
+                  brand:
+                    type: string
+                  code:
+                    type: string
+                  name:
+                    type: string
+                  address:
+                    type: string
+                  location:
+                    type: object
+                    required:
+                    - latitude
+                    - longitude
+                    properties:
+                      latitude:
+                        type: number
+                        example: '-30.286083'
+                      longitude:
+                        type: number
+                        example: '153.124146'
+        trendperiods:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                title: trendperiod
+                required:
+                - period
+                - description
+                properties:
+                  period:
+                    type: string
+                    example: Day
+                  description:
+                    type: string
+                    example: Price trend today
+        sortfields:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                title: sortfield
+                required:
+                - code
+                - name
+                properties:
+                  code:
+                    type: string
+                    example: Distance
+                  name:
+                    type: string
+                    example: Sort results by distance from specified location
+    error_response:
+      type: object
+      required:
+      - errorDetails
+      properties:
+        errorDetails:
+          type: object
+          required:
+          - code
+          - message
+          properties:
+            code:
+              type: string
+              example: '-2146233033'
+            message:
+              type: string
+              example: String was not recognized as a valid DateTime.
+x-refined-from:
+- open-government-new-south-wales-fuel-swagger.json
+- open-government-new-south-wales-fuel-openapi.yml

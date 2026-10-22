@@ -1,0 +1,22 @@
+generated: '2026-10-21'
+method: none
+source:
+- https://zapier.com/apps/open-government-new-south-wales/integrations
+- https://n8n.io/integrations/open-government-new-south-wales/
+- https://composio.dev/toolkits/open-government-new-south-wales
+- https://monid.ai/tools/open-government-new-south-wales
+checked:
+- https://api.nsw.gov.au/support/buildapps
+- https://api.nsw.gov.au/Support
+- https://api.nsw.gov.au/Product/Index/22
+- https://api.nsw.gov.au/Product/Index/20
+- https://composio.dev/toolkits/open-government-new-south-wales
+- https://monid.ai/tools/open-government-new-south-wales
+- https://n8n.io/integrations/open-government-new-south-wales/
+- https://zapier.com/apps/open-government-new-south-wales/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
+note: The portal lists showcase apps built on the Fuel API (Fuel Check Tasmania, my nrma app, Fuel Check NSW) but
+  no integration partners or marketplace listings.

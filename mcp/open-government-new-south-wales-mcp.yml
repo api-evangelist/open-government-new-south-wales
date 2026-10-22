@@ -1,0 +1,42 @@
+name: Open Government, New South Wales MCP server (candidate)
+type: MCPServer
+status: candidate
+generated: '2026-10-21'
+method: derived
+source:
+- openapi/open-government-new-south-wales-fuel-openapi.yml
+description: >-
+  No official MCP server from API.NSW / NSW Government was found (web search 2026-10-21;
+  pre-flight probes of api.nsw.gov.au, data.nsw.gov.au and fuelcheck.nsw.gov.au returned no MCP
+  endpoint, agent card or MCP docs). The tools below are a CANDIDATE list derived from the
+  Fuel API Swagger 2.0 contract. The contract sets operationId only on the OAuth token
+  operation, so each candidate tool is bound to its method + path.
+deployment:
+  mode: none
+  auth: unknown
+  verified: derived
+auth_notes: >-
+  Per the contract, calls take an OAuth bearer token from GET /oauth/client_credential/accesstoken
+  (grant_type=client_credentials, Basic Authorization), plus apikey, transactionid and
+  requesttimestamp headers.
+tools:
+- name: get_fuel_reference_data
+  description: Get FuelCheck reference data (lists of values such as fuel types, brands and stations).
+  binding: GET /FuelCheckRefData/v2/fuel/lovs
+- name: get_all_fuel_prices
+  description: Get all current fuel prices.
+  binding: GET /FuelPriceCheck/v2/fuel/prices
+- name: get_new_fuel_prices
+  description: Get fuel prices that changed since the last call.
+  binding: GET /FuelPriceCheck/v2/fuel/prices/new
+- name: get_station_fuel_prices
+  description: Get fuel prices for a single station by stationCode.
+  binding: GET /FuelPriceCheck/v2/fuel/prices/station/{stationCode}
+- name: get_fuel_prices_for_location
+  description: Get fuel prices for a location (suburb/postcode in the request body).
+  binding: POST /FuelPriceCheck/v2/fuel/prices/location
+  read_only: true
+- name: get_fuel_prices_nearby
+  description: Get fuel prices within a radius of a coordinate.
+  binding: POST /FuelPriceCheck/v2/fuel/prices/nearby
+  read_only: true

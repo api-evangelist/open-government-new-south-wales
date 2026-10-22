@@ -1,0 +1,89 @@
+generated: '2026-10-21'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 6
+  own: 4
+  other_domain: 1
+  platform: 1
+  roles:
+  - api
+  - data
+  - other
+  - website
+hosts:
+- host: api.gov.au
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: api.gov.au
+  role: api
+  relation: other-domain
+- host: api.nsw.gov.au
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - Website
+  - DeveloperPortal
+  - Support
+  - TermsOfService
+  - PrivacyPolicy
+  - SignUp
+  - Login
+  - About
+  serves:
+  - docs
+  - cdn
+  vendor: cloudflare
+  registrable_domain: nsw.gov.au
+  role: website
+  relation: own
+- host: api.onegov.nsw.gov.au
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: nsw.gov.au
+  role: api
+  relation: own
+- host: data.nsw.gov.au
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types:
+  - OpenData
+  serves: []
+  registrable_domain: nsw.gov.au
+  role: data
+  relation: own
+- host: fuelcheck.nsw.gov.au
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: nsw.gov.au
+  role: other
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - PublicAPIsListing
+  serves: []
+  registrable_domain: github.com
+  role: other
+  relation: platform

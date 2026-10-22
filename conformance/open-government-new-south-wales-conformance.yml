@@ -1,0 +1,20 @@
+generated: '2026-10-21'
+method: searched
+source: https://api.nsw.gov.au/Support
+standards:
+- id: oauth2
+  conforms: true
+  evidence: 'Fuel API page: "An OAuth call is required to provide the consumer with an authorisation token ... For more information see OAuth
+    2.0"; contract operation GET /oauth/client_credential/accesstoken with grant_type query (https://api.nsw.gov.au/Product/Index/22)'
+- id: iso-27001
+  conforms: true
+  evidence: 'Support page: "API NSW Security ISO/IEC 27001:2013 Information system management API.NSW is certified for its implementation of standards."'
+- id: swagger-2.0
+  conforms: true
+  evidence: the document declares swagger-2.0
+- id: rfc9457
+  conforms: false
+  evidence: no response declares application/problem+json
+- id: idempotency
+  conforms: false
+  evidence: no idempotency key parameter on mutating operations

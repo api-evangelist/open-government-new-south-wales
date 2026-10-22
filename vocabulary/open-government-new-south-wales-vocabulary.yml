@@ -1,0 +1,53 @@
+generated: '2026-10-21'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/open-government-new-south-wales-fuel-openapi.yml
+- openapi/open-government-new-south-wales-home-building-compensation-openapi.yml
+- openapi/open-government-new-south-wales-pharmacy-register-openapi.yml
+- openapi/open-government-new-south-wales-property-openapi.yml
+- openapi/open-government-new-south-wales-security-openapi.yml
+vocabulary:
+  name: Open Government, New South Wales Domain Vocabulary
+  description: 'Terms declared by Open Government, New South Wales''s own API contract: its resource groups, objects and enumerations, with the
+    contract''s definitions. Derived, not authored.'
+  version: '2026-10-21'
+  terms:
+  - term: Security
+    definition: 'Resource group in the contract; its operation GET /oauth/client_credential/accesstoken: The client can request an access token
+      using only its client credentials (or other supported means of authentication) when the client is requesting access to the protected resources
+      under its control, or those of another resource owner that have been previously arranged with the authorization server.'
+    tags:
+    - Resource Group
+    source: openapi/open-government-new-south-wales-fuel-openapi.yml
+  - term: v1
+    definition: 'Resource group in the contract; its operation GET /FuelCheckRefData/v1/fuel/lovs: Returns lists of reference data to be used
+      in subsequent requests.'
+    tags:
+    - Resource Group
+    source: openapi/open-government-new-south-wales-fuel-openapi.yml
+  - term: v2
+    definition: 'Resource group in the contract; its operation GET /FuelCheckRefData/v2/fuel/lovs: Returns lists of reference data to be used
+      in subsequent requests.'
+    tags:
+    - Resource Group
+    source: openapi/open-government-new-south-wales-fuel-openapi.yml
+  - term: Browse
+    definition: 'Resource group in the contract; its operation GET /hbccheckregister/v1/browse: Provides the user with a search option to enter
+      in partial information and returns a list of the search.'
+    tags:
+    - Resource Group
+    source: openapi/open-government-new-south-wales-home-building-compensation-openapi.yml
+  - term: Verify
+    definition: 'Resource group in the contract; its operation GET /hbccheckregister/v1/verify: Provides the user with a search option to enter
+      in partial information and returns a list of the search.'
+    tags:
+    - Resource Group
+    source: openapi/open-government-new-south-wales-home-building-compensation-openapi.yml
+  - term: Details
+    definition: 'Resource group in the contract; its operation GET /hbccheckregister/v1/details: Provides a set of detailed information about
+      the individual certificate selected such as the insurance certificate number, principal contractor and licence number, work covered by the
+      insurance, property address and claims paid.'
+    tags:
+    - Resource Group
+    source: openapi/open-government-new-south-wales-home-building-compensation-openapi.yml

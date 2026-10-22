@@ -1,0 +1,690 @@
+openapi: 3.2.0
+info:
+  title: Open Government New South Wales Security API
+  contact: {}
+  version: '1.0'
+  description: 'Operations tagged Security across 12 of this provider''s published API definitions: open-government-new-south-wales-fuel-swagger.json, open-government-new-south-wales-home-building-compensation-swagger.json, open-government-new-south-wales-pharmacy-register-swagger.json, open-government-new-south-wales-property-swagger.json, open-government-new-south-wales-security-swagger.json, open-government-new-south-wales-trades-swagger.json, open-government-new-south-wales-fuel-openapi.yml, open-government-new-south-wales-home-building-compensation-openapi.yml, open-government-new-south-wales-pharmacy-register-openapi.yml, open-government-new-south-wales-property-openapi.yml, open-government-new-south-wales-security-openapi.yml, open-government-new-south-wales-trades-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.onegov.nsw.gov.au/
+- url: https://api.onegov.nsw.gov.au
+tags:
+- name: Security
+paths:
+  /oauth/client_credential/accesstoken:
+    get:
+      tags:
+      - Security
+      description: The client can request an access token using only its client credentials (or other supported means of authentication) when the client is requesting access to the protected resources under its control, or those of another resource owner that have been previously arranged with the authorization server.
+      summary: Oauth
+      operationId: OauthClientCredentialAccesstokenGet
+      deprecated: false
+      parameters:
+      - in: query
+        name: grant_type
+        required: true
+        description: client_credentials
+        schema:
+          type: string
+      - in: header
+        name: Authorization
+        required: true
+        description: Base64 encoded value of <b>api_key:api_secret</b>. Eg 'Basic {Base64 encoded value of <b>api_key:api_secret</b>}'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/access_token_response'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/access_token_failed_response'
+      security: []
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+components:
+  schemas:
+    access_token_response:
+      type: object
+      title: access_token_response
+      required:
+      - refresh_token_expires_in
+      - api_product_list
+      - api_product_list_json
+      - organization_name
+      - developer.email
+      - token_type
+      - issued_at
+      - client_id
+      - access_token
+      - application_name
+      - scope
+      - expires_in
+      - refresh_count
+      - status
+      properties:
+        refresh_token_expires_in:
+          type: string
+        api_product_list_json:
+          type: array
+          items:
+            type: string
+        organization_name:
+          type: string
+          example: onegov
+        developer.email:
+          type: string
+        token_type:
+          type: string
+          example: BearerToken
+        issued_at:
+          type: string
+          example: '1569816768267'
+        client_id:
+          type: string
+        access_token:
+          type: string
+        application_name:
+          type: string
+        scope:
+          type: string
+        expires_in:
+          type: string
+        refresh_count:
+          type: string
+        status:
+          type: string
+          example: approved
+    access_token_failed_response:
+      type: object
+      title: access_token_failed_response
+      required:
+      - ErrorCode
+      - Error
+      properties:
+        ErrorCode:
+          type: string
+          example: invalid_client
+        Error:
+          type: string
+          example: Client credentials are invalid
+    access_token_response_2:
+      type: object
+      title: access_token_response
+      required:
+      - refresh_token_expires_in
+      - api_product_list
+      - api_product_list_json
+      - organization_name
+      - developer.email
+      - token_type
+      - issued_at
+      - client_id
+      - access_token
+      - application_name
+      - scope
+      - expires_in
+      - refresh_count
+      - status
+      properties:
+        refresh_token_expires_in:
+          type: string
+        api_product_list_json:
+          type: array
+          items:
+            type: string
+        organization_name:
+          type: string
+          example:
+          - onegov
+        developer.email:
+          type: string
+        token_type:
+          type: string
+          example:
+          - BearerToken
+        issued_at:
+          type: string
+          example:
+          - '1569816768267'
+        client_id:
+          type: string
+        access_token:
+          type: string
+        application_name:
+          type: string
+        scope:
+          type: string
+        expires_in:
+          type: string
+        refresh_count:
+          type: string
+        status:
+          type: string
+          example:
+          - approved
+    access_token_failed_response_2:
+      type: object
+      title: access_token_failed_response
+      required:
+      - ErrorCode
+      - Error
+      properties:
+        ErrorCode:
+          type: string
+          example:
+          - invalid_client
+        Error:
+          type: string
+          example:
+          - Client credentials are invalid
+    access_token_response_3:
+      type: object
+      title: access_token_response
+      required:
+      - refresh_token_expires_in
+      - api_product_list
+      - api_product_list_json
+      - organization_name
+      - developer.email
+      - token_type
+      - issued_at
+      - client_id
+      - access_token
+      - application_name
+      - scope
+      - expires_in
+      - refresh_count
+      - status
+      properties:
+        refresh_token_expires_in:
+          type: string
+        api_product_list_json:
+          type: array
+          items:
+            type: string
+        organization_name:
+          type: string
+          example:
+          - onegov
+        developer.email:
+          type: string
+        token_type:
+          type: string
+          example:
+          - BearerToken
+        issued_at:
+          type: string
+          example:
+          - '1569816768267'
+        client_id:
+          type: string
+        access_token:
+          type: string
+        application_name:
+          type: string
+        scope:
+          type: string
+        expires_in:
+          type: string
+        refresh_count:
+          type: string
+        status:
+          type: string
+          example:
+          - approved
+    access_token_failed_response_3:
+      type: object
+      title: access_token_failed_response
+      required:
+      - ErrorCode
+      - Error
+      properties:
+        ErrorCode:
+          type: string
+          example:
+          - invalid_client
+        Error:
+          type: string
+          example:
+          - Client credentials are invalid
+    access_token_response_4:
+      type: object
+      title: access_token_response
+      required:
+      - refresh_token_expires_in
+      - api_product_list
+      - api_product_list_json
+      - organization_name
+      - developer.email
+      - token_type
+      - issued_at
+      - client_id
+      - access_token
+      - application_name
+      - scope
+      - expires_in
+      - refresh_count
+      - status
+      properties:
+        refresh_token_expires_in:
+          type: string
+        api_product_list_json:
+          type: array
+          items:
+            type: string
+        organization_name:
+          type: string
+          examples:
+          - onegov
+        developer.email:
+          type: string
+        token_type:
+          type: string
+          examples:
+          - BearerToken
+        issued_at:
+          type: string
+          examples:
+          - '1569816768267'
+        client_id:
+          type: string
+        access_token:
+          type: string
+        application_name:
+          type: string
+        scope:
+          type: string
+        expires_in:
+          type: string
+        refresh_count:
+          type: string
+        status:
+          type: string
+          examples:
+          - approved
+    access_token_failed_response_4:
+      type: object
+      title: access_token_failed_response
+      required:
+      - ErrorCode
+      - Error
+      properties:
+        ErrorCode:
+          type: string
+          examples:
+          - invalid_client
+        Error:
+          type: string
+          examples:
+          - Client credentials are invalid
+    access_token_response_5:
+      type: object
+      title: access_token_response
+      required:
+      - refresh_token_expires_in
+      - api_product_list
+      - api_product_list_json
+      - organization_name
+      - developer.email
+      - token_type
+      - issued_at
+      - client_id
+      - access_token
+      - application_name
+      - scope
+      - expires_in
+      - refresh_count
+      - status
+      properties:
+        refresh_token_expires_in:
+          type: string
+        api_product_list_json:
+          type: array
+          items:
+            type: string
+        organization_name:
+          type: string
+          example:
+          - onegov
+        developer.email:
+          type: string
+        token_type:
+          type: string
+          example:
+          - BearerToken
+        issued_at:
+          type: string
+          example:
+          - '1569816768267'
+        client_id:
+          type: string
+        access_token:
+          type: string
+        application_name:
+          type: string
+        scope:
+          type: string
+        expires_in:
+          type: string
+        refresh_count:
+          type: string
+        status:
+          type: string
+          example:
+          - approved
+    access_token_failed_response_5:
+      type: object
+      title: access_token_failed_response
+      required:
+      - ErrorCode
+      - Error
+      properties:
+        ErrorCode:
+          type: string
+          example:
+          - invalid_client
+        Error:
+          type: string
+          example:
+          - Client credentials are invalid
+    access_token_response_6:
+      type: object
+      title: access_token_response
+      required:
+      - refresh_token_expires_in
+      - api_product_list
+      - api_product_list_json
+      - organization_name
+      - developer.email
+      - token_type
+      - issued_at
+      - client_id
+      - access_token
+      - application_name
+      - scope
+      - expires_in
+      - refresh_count
+      - status
+      properties:
+        refresh_token_expires_in:
+          type: string
+        api_product_list_json:
+          type: array
+          items:
+            type: string
+        organization_name:
+          type: string
+          example:
+          - onegov
+        developer.email:
+          type: string
+        token_type:
+          type: string
+          example:
+          - BearerToken
+        issued_at:
+          type: string
+          example:
+          - '1569816768267'
+        client_id:
+          type: string
+        access_token:
+          type: string
+        application_name:
+          type: string
+        scope:
+          type: string
+        expires_in:
+          type: string
+        refresh_count:
+          type: string
+        status:
+          type: string
+          example:
+          - approved
+    access_token_failed_response_6:
+      type: object
+      title: access_token_failed_response
+      required:
+      - ErrorCode
+      - Error
+      properties:
+        ErrorCode:
+          type: string
+          example:
+          - invalid_client
+        Error:
+          type: string
+          example:
+          - Client credentials are invalid
+    access_token_response_7:
+      type: object
+      title: access_token_response
+      required:
+      - refresh_token_expires_in
+      - api_product_list
+      - api_product_list_json
+      - organization_name
+      - developer.email
+      - token_type
+      - issued_at
+      - client_id
+      - access_token
+      - application_name
+      - scope
+      - expires_in
+      - refresh_count
+      - status
+      properties:
+        refresh_token_expires_in:
+          type: string
+        api_product_list_json:
+          type: array
+          items:
+            type: string
+        organization_name:
+          type: string
+          example:
+          - onegov
+        developer.email:
+          type: string
+        token_type:
+          type: string
+          example:
+          - BearerToken
+        issued_at:
+          type: string
+          example:
+          - '1569816768267'
+        client_id:
+          type: string
+        access_token:
+          type: string
+        application_name:
+          type: string
+        scope:
+          type: string
+        expires_in:
+          type: string
+        refresh_count:
+          type: string
+        status:
+          type: string
+          example:
+          - approved
+    access_token_failed_response_7:
+      type: object
+      title: access_token_failed_response
+      required:
+      - ErrorCode
+      - Error
+      properties:
+        ErrorCode:
+          type: string
+          example:
+          - invalid_client
+        Error:
+          type: string
+          example:
+          - Client credentials are invalid
+    access_token_response_8:
+      type: object
+      title: access_token_response
+      required:
+      - refresh_token_expires_in
+      - api_product_list
+      - api_product_list_json
+      - organization_name
+      - developer.email
+      - token_type
+      - issued_at
+      - client_id
+      - access_token
+      - application_name
+      - scope
+      - expires_in
+      - refresh_count
+      - status
+      properties:
+        refresh_token_expires_in:
+          type: string
+        api_product_list_json:
+          type: array
+          items:
+            type: string
+        organization_name:
+          type: string
+          examples:
+          - onegov
+        developer.email:
+          type: string
+        token_type:
+          type: string
+          examples:
+          - BearerToken
+        issued_at:
+          type: string
+          examples:
+          - '1569816768267'
+        client_id:
+          type: string
+        access_token:
+          type: string
+        application_name:
+          type: string
+        scope:
+          type: string
+        expires_in:
+          type: string
+        refresh_count:
+          type: string
+        status:
+          type: string
+          examples:
+          - approved
+    access_token_failed_response_8:
+      type: object
+      title: access_token_failed_response
+      required:
+      - ErrorCode
+      - Error
+      properties:
+        ErrorCode:
+          type: string
+          examples:
+          - invalid_client
+        Error:
+          type: string
+          examples:
+          - Client credentials are invalid
+    access_token_response_9:
+      type: object
+      title: access_token_response
+      required:
+      - refresh_token_expires_in
+      - api_product_list
+      - api_product_list_json
+      - organization_name
+      - developer.email
+      - token_type
+      - issued_at
+      - client_id
+      - access_token
+      - application_name
+      - scope
+      - expires_in
+      - refresh_count
+      - status
+      properties:
+        refresh_token_expires_in:
+          type: string
+        api_product_list_json:
+          type: array
+          items:
+            type: string
+        organization_name:
+          type: string
+          example:
+          - onegov
+        developer.email:
+          type: string
+        token_type:
+          type: string
+          example:
+          - BearerToken
+        issued_at:
+          type: string
+          example:
+          - '1569816768267'
+        client_id:
+          type: string
+        access_token:
+          type: string
+        application_name:
+          type: string
+        scope:
+          type: string
+        expires_in:
+          type: string
+        refresh_count:
+          type: string
+        status:
+          type: string
+          example:
+          - approved
+    access_token_failed_response_9:
+      type: object
+      title: access_token_failed_response
+      required:
+      - ErrorCode
+      - Error
+      properties:
+        ErrorCode:
+          type: string
+          example:
+          - invalid_client
+        Error:
+          type: string
+          example:
+          - Client credentials are invalid
+x-refined-from:
+- open-government-new-south-wales-fuel-swagger.json
+- open-government-new-south-wales-home-building-compensation-swagger.json
+- open-government-new-south-wales-pharmacy-register-swagger.json
+- open-government-new-south-wales-property-swagger.json
+- open-government-new-south-wales-security-swagger.json
+- open-government-new-south-wales-trades-swagger.json
+- open-government-new-south-wales-fuel-openapi.yml
+- open-government-new-south-wales-home-building-compensation-openapi.yml
+- open-government-new-south-wales-pharmacy-register-openapi.yml
+- open-government-new-south-wales-property-openapi.yml
+- open-government-new-south-wales-security-openapi.yml
+- open-government-new-south-wales-trades-openapi.yml

@@ -1,0 +1,3291 @@
+openapi: 3.2.0
+info:
+  title: Open Government New South Wales Details API
+  contact: {}
+  version: '1.0'
+  description: 'Operations tagged Details across 10 of this provider''s published API definitions: open-government-new-south-wales-home-building-compensation-swagger.json, open-government-new-south-wales-pharmacy-register-swagger.json, open-government-new-south-wales-property-swagger.json, open-government-new-south-wales-security-swagger.json, open-government-new-south-wales-trades-swagger.json, open-government-new-south-wales-home-building-compensation-openapi.yml, open-government-new-south-wales-pharmacy-register-openapi.yml, open-government-new-south-wales-property-openapi.yml, open-government-new-south-wales-security-openapi.yml, open-government-new-south-wales-trades-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.onegov.nsw.gov.au/
+- url: https://api.onegov.nsw.gov.au
+tags:
+- name: Details
+paths:
+  /hbccheckregister/v1/details:
+    get:
+      tags:
+      - Details
+      description: Provides a set of detailed information about the individual certificate selected such as the insurance certificate number, principal contractor and licence number, work covered by the insurance, property address and claims paid.
+      summary: Details Get Method
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        schema:
+          type: string
+          default: Bearer {token}
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      - name: licenceid
+        in: query
+        required: true
+        description: The 'licenceId' value for a licence returned by a browse or verify request. Every licence in the OneGov system is given a unique identifier. This item contains that unique identifier.
+        schema:
+          type: string
+          default: 1-17YIOEU
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/details_results'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invalid_token_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error'
+      operationId: getHbccheckregisterV1Details
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+  /pharmacyregister/v1/details:
+    get:
+      tags:
+      - Details
+      description: Provides a set of detailed information about the individual licence selected that corresponds to the level of information seen on the detailed screen of the Public Register application.
+      summary: Details Get Method
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        schema:
+          type: string
+          default: Bearer {token}
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      - name: licenceid
+        in: query
+        required: true
+        description: The 'licenceId' value for a licence returned by a browse or verify request. Every licence in the OneGov system is given a unique identifier. This item contains that unique identifier.
+        schema:
+          type: string
+          default: a835g000000slPUAAY
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/details_results_2'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invalid_token_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error'
+      operationId: getPharmacyregisterV1Details
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+  /propertyregister/v1/details:
+    get:
+      tags:
+      - Details
+      description: Provides a set of detailed information about the individual licence selected that corresponds to the level of information seen on the detailed screen of the Public Register application.
+      summary: Details Get Method
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        schema:
+          type: string
+          default: Bearer {token}
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      - name: licenceid
+        in: query
+        required: true
+        description: The 'licenceId' value for a licence returned by a browse or verify request. Every licence in the OneGov system is given a unique identifier. This item contains that unique identifier.
+        schema:
+          type: string
+          default: 1-17YIOEU
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/details_results'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invalid_token_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error'
+      operationId: getPropertyregisterV1Details
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+  /securityregister/v1/details:
+    get:
+      tags:
+      - Details
+      description: Provides a set of detailed information about the individual licence selected that corresponds to the level of information seen on the detailed screen of the Public Register application.
+      summary: Details Get Method
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        value: Bearer {token}
+        schema:
+          type: string
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      - name: licenceid
+        in: query
+        required: true
+        value: 1-33Z0ERY
+        description: The 'licenceId' value for a licence returned by a browse or verify request. Every licence in the OneGov system is given a unique identifier. This item contains that unique identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/details_results_3'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bad_request_2'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invalid_token_response_2'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error_2'
+      operationId: getSecurityregisterV1Details
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au
+  /tradesregister/v1/details:
+    get:
+      tags:
+      - Details
+      description: Provides a set of detailed information about the individual licence selected that corresponds to the level of information seen on the detailed screen of the Public Register application.
+      summary: Details Get Method
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        schema:
+          type: string
+          default: Bearer {token}
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      - name: licenceid
+        in: query
+        required: true
+        description: The 'licenceId' value for a licence returned by a browse or verify request. Every licence in the OneGov system is given a unique identifier. This item contains that unique identifier.
+        schema:
+          type: string
+          default: 1-LJ6-752
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/details_results_4'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invalid_token_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error'
+      operationId: getTradesregisterV1Details
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+components:
+  schemas:
+    internal_server_error:
+      type: object
+      title: internal_server_error
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          example:
+          - Unable to search.
+    details_results:
+      type: object
+      title: details_results
+      properties:
+        licensingAgency:
+          type: object
+          title: licensingAgency
+          required:
+          - contactLink
+          - name
+          properties:
+            contactLink:
+              type: string
+              title: contactLink
+            name:
+              type: string
+              title: name
+        licenceDetail:
+          type: object
+          title: licenceDetail
+          properties:
+            addressType:
+              type: string
+              title: addressType
+            address:
+              type: string
+              title: address
+            licenceName:
+              type: string
+              title: licenceName
+            licenceNumber:
+              type: string
+              title: licenceNumber
+            licensee:
+              type: string
+              title: licensee
+            licenceType:
+              type: string
+              title: licenceType
+            licenseeBirthdate:
+              type: string
+              title: licenseeBirthdate
+            status:
+              type: string
+              title: status
+            licenceTypeName:
+              type: string
+              title: licenceTypeName
+            refusedDate:
+              type: string
+              title: refusedDate
+            startDate:
+              type: string
+              title: startDate
+            expiryDate:
+              type: string
+              title: expiryDate
+            licenceeABN:
+              type: string
+              title: licenceeABN
+            licenceeACN:
+              type: string
+              title: licenceeACN
+            historicalLicenceNumbers:
+              type: array
+              title: historicalLicenceNumbers
+              items:
+                type: string
+        licenceClasses:
+          type: array
+          title: licenceClasses
+          items:
+            type: object
+            title: licenceClass
+            properties:
+              className:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        conditions:
+          type: array
+          title: conditions
+          items:
+            type: object
+            title: condition
+            properties:
+              licenceClass:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        histories:
+          type: array
+          title: histories
+          items:
+            type: string
+        premises:
+          type: array
+          title: premises
+          items:
+            type: object
+            title: premise
+            properties:
+              type:
+                type: string
+              businessName:
+                type: string
+              businessAddress:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        vehicleRegistrations:
+          type: array
+          title: vehicleRegistrations
+          items:
+            type: object
+            title: vehicleRegistration
+            properties:
+              vehicleRegistrationNumber:
+                type: string
+        businessNames:
+          type: array
+          title: businessNames
+          items:
+            type: object
+            title: businessName
+            properties:
+              businessName:
+                type: string
+        administration:
+          type: object
+          title: administration
+          properties:
+            manager:
+              type: object
+              title: manager
+              properties:
+                licenceNumber:
+                  type: string
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                dateAppointed:
+                  type: string
+            receiver:
+              type: object
+              title: receiver
+              properties:
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                phoneNumber:
+                  type: string
+                dateAppointed:
+                  type: string
+            administrators:
+              type: array
+              title: administrators
+              items:
+                type: object
+                title: administrator
+                properties:
+                  surname:
+                    type: string
+                  firstName:
+                    type: string
+                  dateAppointed:
+                    type: string
+                  dateCeased:
+                    type: string
+                  isActive:
+                    type: string
+        associatedLicences:
+          type: array
+          title: associatedLicences
+          items:
+            type: object
+            title: associatedLicence
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              licenceNumber:
+                type: string
+              licenceStatus:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        associatedParties:
+          type: array
+          title: associatedParties
+          items:
+            type: object
+            title: associatedParty
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              role:
+                type: string
+              dateOfBirth:
+                type: string
+              yearOfBirth:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              address:
+                type: string
+        complianceActions:
+          type: object
+          title: complianceActions
+          properties:
+            refusedRenewals:
+              type: array
+              title: refusedRenewals
+              items:
+                type: object
+                title: refusedRenewal
+                properties:
+                  dateRefused:
+                    type: string
+                  isActive:
+                    type: string
+            statusInstruction:
+              type: array
+              title: statusInstruction
+              items:
+                type: string
+            disciplinaryActions:
+              type: array
+              title: disciplinaryActions
+              items:
+                type: object
+                title: disciplinaryAction
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  startDate:
+                    type: string
+                  EndDate:
+                    type: string
+            suspensions:
+              type: array
+              title: suspensions
+              items:
+                type: object
+                title: suspension
+                properties:
+                  name:
+                    type: string
+                  startDate:
+                    type: string
+                  endDate:
+                    type: string
+            prosecutions:
+              type: array
+              title: prosecutions
+              items:
+                type: object
+                title: prosecution
+                properties:
+                  isActive:
+                    type: string
+                  offence:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  court:
+                    type: string
+                  result:
+                    type: string
+            infringementNotices:
+              type: array
+              title: infringementNotices
+              items:
+                type: object
+                title: infringementNotice
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+            ctttOrders:
+              type: array
+              title: ctttOrders
+              items:
+                type: object
+                title: ctttOrder
+                properties:
+                  judgementDate:
+                    type: string
+                  complyByDate:
+                    type: string
+            publicWarnings:
+              type: array
+              title: publicWarnings
+              items:
+                type: object
+                title: publicWarning
+                properties:
+                  isActive:
+                    type: string
+                  publicWarningText:
+                    type: string
+            publicWarningsCount:
+              type: integer
+            insuranceClaimCounts:
+              type: object
+              title: insuranceClaimCounts
+              properties:
+                claimCount:
+                  type: integer
+                claimCountOldScheme:
+                  type: integer
+                insuranceClaimsPaid:
+                  type: integer
+                statutoryInsuranceClaimsPaid:
+                  type: integer
+            cautionReprimandCount:
+              type: integer
+        venues:
+          type: array
+          title: venues
+          items:
+            type: object
+            title: venue
+            properties:
+              type:
+                type: string
+              address:
+                type: string
+        buildingSites:
+          type: object
+          title: buildingSites
+          properties:
+            address:
+              type: string
+            councilDANumber:
+              type: string
+            complyingDCNumber:
+              type: string
+            constructionCertificateNumber:
+              type: string
+            ownerBuilderWorkDescription:
+              type: string
+        drawDetails:
+          type: array
+          title: drawDetails
+          items:
+            type: object
+            title: drawDetail
+            properties:
+              drawDateTime:
+                type: string
+        lotteryDetails:
+          type: array
+          title: lotteryDetails
+          items:
+            type: object
+            title: lotteryDetail
+            properties:
+              lotteryName:
+                type: string
+        prizeDetails:
+          type: array
+          title: prizeDetails
+          items:
+            type: object
+            title: prizeDetail
+            properties:
+              totalValueOfPrizesInNSW:
+                type: string
+    bad_request:
+      type: object
+      title: bad_request
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          example:
+          - Please provide a valid search term.
+    invalid_token_response:
+      type: object
+      title: invalid_token_response
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          example:
+          - Invalid Access Token.
+    details_results_2:
+      type: object
+      title: details_results
+      properties:
+        licensingAgency:
+          type: object
+          title: licensingAgency
+          required:
+          - contactLink
+          - name
+          properties:
+            contactLink:
+              type: string
+              title: contactLink
+            name:
+              type: string
+              title: name
+        licenceDetail:
+          type: object
+          title: licenceDetail
+          properties:
+            addressType:
+              type: string
+              title: addressType
+            address:
+              type: string
+              title: address
+            licenceName:
+              type: string
+              title: licenceName
+            licenceNumber:
+              type: string
+              title: licenceNumber
+            licensee:
+              type: string
+              title: licensee
+            licenceType:
+              type: string
+              title: licenceType
+            licenseeBirthdate:
+              type: string
+              title: licenseeBirthdate
+            status:
+              type: string
+              title: status
+            licenceTypeName:
+              type: string
+              title: licenceTypeName
+            refusedDate:
+              type: string
+              title: refusedDate
+            startDate:
+              type: string
+              title: startDate
+            expiryDate:
+              type: string
+              title: expiryDate
+            licenceeABN:
+              type: string
+              title: licenceeABN
+            licenceeACN:
+              type: string
+              title: licenceeACN
+        licenceClasses:
+          type: array
+          title: licenceClasses
+          items:
+            type: object
+            title: licenceClass
+            properties:
+              className:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        conditions:
+          type: array
+          title: conditions
+          items:
+            type: object
+            title: condition
+            properties:
+              licenceClass:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        histories:
+          type: array
+          title: histories
+          items:
+            type: string
+        premises:
+          type: array
+          title: premises
+          items:
+            type: object
+            title: premise
+            properties:
+              type:
+                type: string
+              businessName:
+                type: string
+              businessAddress:
+                type: string
+        vehicleRegistrations:
+          type: array
+          title: vehicleRegistrations
+          items:
+            type: object
+            title: vehicleRegistration
+            properties:
+              vehicleRegistrationNumber:
+                type: string
+        businessNames:
+          type: array
+          title: businessNames
+          items:
+            type: object
+            title: businessName
+            properties:
+              businessName:
+                type: string
+        administration:
+          type: object
+          title: administration
+          properties:
+            manager:
+              type: object
+              title: manager
+              properties:
+                licenceNumber:
+                  type: string
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                dateAppointed:
+                  type: string
+            receiver:
+              type: object
+              title: receiver
+              properties:
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                phoneNumber:
+                  type: string
+                dateAppointed:
+                  type: string
+            administrators:
+              type: array
+              title: administrators
+              items:
+                type: object
+                title: administrator
+                properties:
+                  surname:
+                    type: string
+                  firstName:
+                    type: string
+                  dateAppointed:
+                    type: string
+                  dateCeased:
+                    type: string
+                  isActive:
+                    type: string
+        associatedLicences:
+          type: array
+          title: associatedLicences
+          items:
+            type: object
+            title: associatedLicence
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              licenceNumber:
+                type: string
+              licenceStatus:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        associatedParties:
+          type: array
+          title: associatedParties
+          items:
+            type: object
+            title: associatedParty
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              role:
+                type: string
+              dateOfBirth:
+                type: string
+              yearOfBirth:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              address:
+                type: string
+        complianceActions:
+          type: object
+          title: complianceActions
+          properties:
+            refusedRenewals:
+              type: array
+              title: refusedRenewals
+              items:
+                type: object
+                title: refusedRenewal
+                properties:
+                  dateRefused:
+                    type: string
+                  isActive:
+                    type: string
+            statusInstruction:
+              type: array
+              title: statusInstruction
+              items:
+                type: string
+            disciplinaryActions:
+              type: array
+              title: disciplinaryActions
+              items:
+                type: object
+                title: disciplinaryAction
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  startDate:
+                    type: string
+                  EndDate:
+                    type: string
+            suspensions:
+              type: array
+              title: suspensions
+              items:
+                type: object
+                title: suspension
+                properties:
+                  name:
+                    type: string
+                  startDate:
+                    type: string
+                  endDate:
+                    type: string
+            prosecutions:
+              type: array
+              title: prosecutions
+              items:
+                type: object
+                title: prosecution
+                properties:
+                  isActive:
+                    type: string
+                  offence:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  court:
+                    type: string
+                  result:
+                    type: string
+            infringementNotices:
+              type: array
+              title: infringementNotices
+              items:
+                type: object
+                title: infringementNotice
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+            ctttOrders:
+              type: array
+              title: ctttOrders
+              items:
+                type: object
+                title: ctttOrder
+                properties:
+                  judgementDate:
+                    type: string
+                  complyByDate:
+                    type: string
+            publicWarnings:
+              type: array
+              title: publicWarnings
+              items:
+                type: object
+                title: publicWarning
+                properties:
+                  isActive:
+                    type: string
+                  publicWarningText:
+                    type: string
+            publicWarningsCount:
+              type: integer
+            insuranceClaimCounts:
+              type: object
+              title: insuranceClaimCounts
+              properties:
+                claimCount:
+                  type: integer
+                claimCountOldScheme:
+                  type: integer
+                insuranceClaimsPaid:
+                  type: integer
+                statutoryInsuranceClaimsPaid:
+                  type: integer
+            cautionReprimandCount:
+              type: integer
+        venues:
+          type: array
+          title: venues
+          items:
+            type: object
+            title: venue
+            properties:
+              type:
+                type: string
+              address:
+                type: string
+        buildingSites:
+          type: object
+          title: buildingSites
+          properties:
+            address:
+              type: string
+            councilDANumber:
+              type: string
+            complyingDCNumber:
+              type: string
+            constructionCertificateNumber:
+              type: string
+            ownerBuilderWorkDescription:
+              type: string
+        drawDetails:
+          type: array
+          title: drawDetails
+          items:
+            type: object
+            title: drawDetail
+            properties:
+              drawDateTime:
+                type: string
+        lotteryDetails:
+          type: array
+          title: lotteryDetails
+          items:
+            type: object
+            title: lotteryDetail
+            properties:
+              lotteryName:
+                type: string
+        prizeDetails:
+          type: array
+          title: prizeDetails
+          items:
+            type: object
+            title: prizeDetail
+            properties:
+              totalValueOfPrizesInNSW:
+                type: string
+    internal_server_error_2:
+      type: object
+      title: internal_server_error
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Unable to search.
+    details_results_3:
+      type: object
+      title: details_results
+      properties:
+        licensingAgency:
+          type: object
+          title: licensingAgency
+          required:
+          - contactLink
+          - name
+          properties:
+            contactLink:
+              type: string
+              title: contactLink
+            name:
+              type: string
+              title: name
+        licenceDetail:
+          type: object
+          title: licenceDetail
+          properties:
+            addressType:
+              type: string
+              title: addressType
+            address:
+              type: string
+              title: address
+            licenceName:
+              type: string
+              title: licenceName
+            licenceNumber:
+              type: string
+              title: licenceNumber
+            licensee:
+              type: string
+              title: licensee
+            licenceType:
+              type: string
+              title: licenceType
+            licenseeBirthdate:
+              type: string
+              title: licenseeBirthdate
+            status:
+              type: string
+              title: status
+            licenceTypeName:
+              type: string
+              title: licenceTypeName
+            refusedDate:
+              type: string
+              title: refusedDate
+            startDate:
+              type: string
+              title: startDate
+            expiryDate:
+              type: string
+              title: expiryDate
+            licenceeABN:
+              type: string
+              title: licenceeABN
+            licenceeACN:
+              type: string
+              title: licenceeACN
+        licenceClasses:
+          type: array
+          title: licenceClasses
+          items:
+            type: object
+            title: licenceClass
+            properties:
+              className:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        conditions:
+          type: array
+          title: conditions
+          items:
+            type: object
+            title: condition
+            properties:
+              licenceClass:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        histories:
+          type: array
+          title: histories
+          items:
+            type: string
+        premises:
+          type: array
+          title: premises
+          items:
+            type: object
+            title: premise
+            properties:
+              type:
+                type: string
+              businessName:
+                type: string
+              businessAddress:
+                type: string
+        vehicleRegistrations:
+          type: array
+          title: vehicleRegistrations
+          items:
+            type: object
+            title: vehicleRegistration
+            properties:
+              vehicleRegistrationNumber:
+                type: string
+        businessNames:
+          type: array
+          title: businessNames
+          items:
+            type: object
+            title: businessName
+            properties:
+              businessName:
+                type: string
+        administration:
+          type: object
+          title: administration
+          properties:
+            manager:
+              type: object
+              title: manager
+              properties:
+                licenceNumber:
+                  type: string
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                dateAppointed:
+                  type: string
+            receiver:
+              type: object
+              title: receiver
+              properties:
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                phoneNumber:
+                  type: string
+                dateAppointed:
+                  type: string
+            administrators:
+              type: array
+              title: administrators
+              items:
+                type: object
+                title: administrator
+                properties:
+                  surname:
+                    type: string
+                  firstName:
+                    type: string
+                  dateAppointed:
+                    type: string
+                  dateCeased:
+                    type: string
+                  isActive:
+                    type: string
+        associatedLicences:
+          type: array
+          title: associatedLicences
+          items:
+            type: object
+            title: associatedLicence
+            properties:
+              name:
+                name: string
+              isActive:
+                type: string
+              licenceNumber:
+                type: string
+              licenceStatus:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        associatedParties:
+          type: array
+          title: associatedParties
+          items:
+            type: object
+            title: associatedParty
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              role:
+                type: string
+              dateOfBirth:
+                type: string
+              yearOfBirth:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              address:
+                type: string
+        complianceActions:
+          type: object
+          title: complianceActions
+          properties:
+            refusedRenewals:
+              type: array
+              title: refusedRenewals
+              items:
+                type: object
+                title: refusedRenewal
+                properties:
+                  dateRefused:
+                    type: string
+                  isActive:
+                    type: string
+            statusInstruction:
+              type: array
+              title: statusInstruction
+              items:
+                type: string
+            disciplinaryActions:
+              type: array
+              title: disciplinaryActions
+              items:
+                type: object
+                title: disciplinaryAction
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  startDate:
+                    type: string
+                  EndDate:
+                    type: string
+            suspensions:
+              type: array
+              title: suspensions
+              items:
+                type: object
+                title: suspension
+                properties:
+                  name:
+                    type: string
+                  startDate:
+                    type: string
+                  endDate:
+                    type: string
+            prosecutions:
+              type: array
+              title: prosecutions
+              items:
+                type: object
+                title: prosecution
+                properties:
+                  isActive:
+                    type: string
+                  offence:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  court:
+                    type: string
+                  result:
+                    type: string
+            infringementNotices:
+              type: array
+              title: infringementNotices
+              items:
+                type: object
+                title: infringementNotice
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+            ctttOrders:
+              type: array
+              title: ctttOrders
+              items:
+                type: object
+                title: ctttOrder
+                properties:
+                  judgementDate:
+                    type: string
+                  complyByDate:
+                    type: string
+            publicWarnings:
+              type: array
+              title: publicWarnings
+              items:
+                type: object
+                title: publicWarning
+                properties:
+                  isActive:
+                    type: string
+                  publicWarningText:
+                    type: string
+            publicWarningsCount:
+              type: integer
+            insuranceClaimCounts:
+              type: object
+              title: insuranceClaimCounts
+              properties:
+                claimCount:
+                  type: integer
+                claimCountOldScheme:
+                  type: integer
+                insuranceClaimsPaid:
+                  type: integer
+                statutoryInsuranceClaimsPaid:
+                  type: integer
+            cautionReprimandCount:
+              type: integer
+        venues:
+          type: array
+          title: venues
+          items:
+            type: object
+            title: venue
+            properties:
+              type:
+                type: string
+              address:
+                type: string
+        buildingSites:
+          type: object
+          title: buildingSites
+          properties:
+            address:
+              type: string
+            councilDANumber:
+              type: string
+            complyingDCNumber:
+              type: string
+            constructionCertificateNumber:
+              type: string
+            ownerBuilderWorkDescription:
+              type: string
+        drawDetails:
+          type: array
+          title: drawDetails
+          items:
+            type: object
+            title: drawDetail
+            properties:
+              drawDateTime:
+                type: string
+        lotteryDetails:
+          type: array
+          title: lotteryDetails
+          items:
+            type: object
+            title: lotteryDetail
+            properties:
+              lotteryName:
+                type: string
+        prizeDetails:
+          type: array
+          title: prizeDetails
+          items:
+            type: object
+            title: prizeDetail
+            properties:
+              totalValueOfPrizesInNSW:
+                type: string
+    bad_request_2:
+      type: object
+      title: bad_request
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Please provide a valid search term.
+    invalid_token_response_2:
+      type: object
+      title: invalid_token_response
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Invalid Access Token.
+    details_results_4:
+      type: object
+      title: details_results
+      properties:
+        licensingAgency:
+          type: object
+          title: licensingAgency
+          required:
+          - contactLink
+          - name
+          properties:
+            contactLink:
+              type: string
+              title: contactLink
+            name:
+              type: string
+              title: name
+        licenceDetail:
+          type: object
+          title: licenceDetail
+          properties:
+            addressType:
+              type: string
+              title: addressType
+            address:
+              type: string
+              title: address
+            licenceName:
+              type: string
+              title: licenceName
+            licenceNumber:
+              type: string
+              title: licenceNumber
+            licensee:
+              type: string
+              title: licensee
+            licenceType:
+              type: string
+              title: licenceType
+            licenseeBirthdate:
+              type: string
+              title: licenseeBirthdate
+            status:
+              type: string
+              title: status
+            licenceTypeName:
+              type: string
+              title: licenceTypeName
+            refusedDate:
+              type: string
+              title: refusedDate
+            startDate:
+              type: string
+              title: startDate
+            expiryDate:
+              type: string
+              title: expiryDate
+            licenceeABN:
+              type: string
+              title: licenceeABN
+            licenceeACN:
+              type: string
+              title: licenceeACN
+        licenceClasses:
+          type: array
+          title: licenceClasses
+          items:
+            type: object
+            title: licenceClass
+            properties:
+              className:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              conditions:
+                type: array
+                title: conditions
+                items:
+                  type: object
+                  title: condition
+                  properties:
+                    licenceClass:
+                      type: string
+                    isActive:
+                      type: string
+                    description:
+                      type: string
+                    startDate:
+                      type: string
+                    endDate:
+                      type: string
+        conditions:
+          type: array
+          title: conditions
+          items:
+            type: object
+            title: condition
+            properties:
+              licenceClass:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        histories:
+          type: array
+          title: histories
+          items:
+            type: string
+        premises:
+          type: array
+          title: premises
+          items:
+            type: object
+            title: premise
+            properties:
+              type:
+                type: string
+              businessName:
+                type: string
+              businessAddress:
+                type: string
+        vehicleRegistrations:
+          type: array
+          title: vehicleRegistrations
+          items:
+            type: object
+            title: vehicleRegistration
+            properties:
+              vehicleRegistrationNumber:
+                type: string
+        businessNames:
+          type: array
+          title: businessNames
+          items:
+            type: object
+            title: businessName
+            properties:
+              businessName:
+                type: string
+        administration:
+          type: object
+          title: administration
+          properties:
+            manager:
+              type: object
+              title: manager
+              properties:
+                licenceNumber:
+                  type: string
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                dateAppointed:
+                  type: string
+            receiver:
+              type: object
+              title: receiver
+              properties:
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                phoneNumber:
+                  type: string
+                dateAppointed:
+                  type: string
+            administrators:
+              type: array
+              title: administrators
+              items:
+                type: object
+                title: administrator
+                properties:
+                  surname:
+                    type: string
+                  firstName:
+                    type: string
+                  dateAppointed:
+                    type: string
+                  dateCeased:
+                    type: string
+                  isActive:
+                    type: string
+        associatedLicences:
+          type: array
+          title: associatedLicences
+          items:
+            type: object
+            title: associatedLicence
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              licenceNumber:
+                type: string
+              licenceStatus:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        associatedParties:
+          type: array
+          title: associatedParties
+          items:
+            type: object
+            title: associatedParty
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              role:
+                type: string
+              dateOfBirth:
+                type: string
+              yearOfBirth:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              address:
+                type: string
+        complianceActions:
+          type: object
+          title: complianceActions
+          properties:
+            refusedRenewals:
+              type: array
+              title: refusedRenewals
+              items:
+                type: object
+                title: refusedRenewal
+                properties:
+                  dateRefused:
+                    type: string
+                  isActive:
+                    type: string
+            statusInstruction:
+              type: array
+              title: statusInstruction
+              items:
+                type: string
+            disciplinaryActions:
+              type: array
+              title: disciplinaryActions
+              items:
+                type: object
+                title: disciplinaryAction
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  startDate:
+                    type: string
+                  EndDate:
+                    type: string
+            suspensions:
+              type: array
+              title: suspensions
+              items:
+                type: object
+                title: suspension
+                properties:
+                  name:
+                    type: string
+                  startDate:
+                    type: string
+                  endDate:
+                    type: string
+            prosecutions:
+              type: array
+              title: prosecutions
+              items:
+                type: object
+                title: prosecution
+                properties:
+                  isActive:
+                    type: string
+                  offence:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  court:
+                    type: string
+                  result:
+                    type: string
+            infringementNotices:
+              type: array
+              title: infringementNotices
+              items:
+                type: object
+                title: infringementNotice
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+            ctttOrders:
+              type: array
+              title: ctttOrders
+              items:
+                type: object
+                title: ctttOrder
+                properties:
+                  judgementDate:
+                    type: string
+                  complyByDate:
+                    type: string
+            publicWarnings:
+              type: array
+              title: publicWarnings
+              items:
+                type: object
+                title: publicWarning
+                properties:
+                  isActive:
+                    type: string
+                  publicWarningText:
+                    type: string
+            publicWarningsCount:
+              type: integer
+            insuranceClaimCounts:
+              type: object
+              title: insuranceClaimCounts
+              properties:
+                claimCount:
+                  type: integer
+                claimCountOldScheme:
+                  type: integer
+                insuranceClaimsPaid:
+                  type: integer
+                statutoryInsuranceClaimsPaid:
+                  type: integer
+            cautionReprimandCount:
+              type: integer
+        venues:
+          type: array
+          title: venues
+          items:
+            type: object
+            title: venue
+            properties:
+              type:
+                type: string
+              address:
+                type: string
+        buildingSites:
+          type: object
+          title: buildingSites
+          properties:
+            address:
+              type: string
+            councilDANumber:
+              type: string
+            complyingDCNumber:
+              type: string
+            constructionCertificateNumber:
+              type: string
+            ownerBuilderWorkDescription:
+              type: string
+        drawDetails:
+          type: array
+          title: drawDetails
+          items:
+            type: object
+            title: drawDetail
+            properties:
+              drawDateTime:
+                type: string
+        lotteryDetails:
+          type: array
+          title: lotteryDetails
+          items:
+            type: object
+            title: lotteryDetail
+            properties:
+              lotteryName:
+                type: string
+        prizeDetails:
+          type: array
+          title: prizeDetails
+          items:
+            type: object
+            title: prizeDetail
+            properties:
+              totalValueOfPrizesInNSW:
+                type: string
+    details_results_5:
+      type: object
+      title: details_results
+      properties:
+        licensingAgency:
+          type: object
+          title: licensingAgency
+          required:
+          - contactLink
+          - name
+          properties:
+            contactLink:
+              type: string
+              title: contactLink
+            name:
+              type: string
+              title: name
+        licenceDetail:
+          type: object
+          title: licenceDetail
+          properties:
+            addressType:
+              type: string
+              title: addressType
+            address:
+              type: string
+              title: address
+            licenceName:
+              type: string
+              title: licenceName
+            licenceNumber:
+              type: string
+              title: licenceNumber
+            licensee:
+              type: string
+              title: licensee
+            licenceType:
+              type: string
+              title: licenceType
+            licenseeBirthdate:
+              type: string
+              title: licenseeBirthdate
+            status:
+              type: string
+              title: status
+            licenceTypeName:
+              type: string
+              title: licenceTypeName
+            refusedDate:
+              type: string
+              title: refusedDate
+            startDate:
+              type: string
+              title: startDate
+            expiryDate:
+              type: string
+              title: expiryDate
+            licenceeABN:
+              type: string
+              title: licenceeABN
+            licenceeACN:
+              type: string
+              title: licenceeACN
+        licenceClasses:
+          type: array
+          title: licenceClasses
+          items:
+            type: object
+            title: licenceClass
+            properties:
+              className:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        conditions:
+          type: array
+          title: conditions
+          items:
+            type: object
+            title: condition
+            properties:
+              licenceClass:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        histories:
+          type: array
+          title: histories
+          items:
+            type: string
+        premises:
+          type: array
+          title: premises
+          items:
+            type: object
+            title: premise
+            properties:
+              type:
+                type: string
+              businessName:
+                type: string
+              businessAddress:
+                type: string
+        vehicleRegistrations:
+          type: array
+          title: vehicleRegistrations
+          items:
+            type: object
+            title: vehicleRegistration
+            properties:
+              vehicleRegistrationNumber:
+                type: string
+        businessNames:
+          type: array
+          title: businessNames
+          items:
+            type: object
+            title: businessName
+            properties:
+              businessName:
+                type: string
+        administration:
+          type: object
+          title: administration
+          properties:
+            manager:
+              type: object
+              title: manager
+              properties:
+                licenceNumber:
+                  type: string
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                dateAppointed:
+                  type: string
+            receiver:
+              type: object
+              title: receiver
+              properties:
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                phoneNumber:
+                  type: string
+                dateAppointed:
+                  type: string
+            administrators:
+              type: array
+              title: administrators
+              items:
+                type: object
+                title: administrator
+                properties:
+                  surname:
+                    type: string
+                  firstName:
+                    type: string
+                  dateAppointed:
+                    type: string
+                  dateCeased:
+                    type: string
+                  isActive:
+                    type: string
+        associatedLicences:
+          type: array
+          title: associatedLicences
+          items:
+            type: object
+            title: associatedLicence
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              licenceNumber:
+                type: string
+              licenceStatus:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        associatedParties:
+          type: array
+          title: associatedParties
+          items:
+            type: object
+            title: associatedParty
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              role:
+                type: string
+              dateOfBirth:
+                type: string
+              yearOfBirth:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              address:
+                type: string
+        complianceActions:
+          type: object
+          title: complianceActions
+          properties:
+            refusedRenewals:
+              type: array
+              title: refusedRenewals
+              items:
+                type: object
+                title: refusedRenewal
+                properties:
+                  dateRefused:
+                    type: string
+                  isActive:
+                    type: string
+            statusInstruction:
+              type: array
+              title: statusInstruction
+              items:
+                type: string
+            disciplinaryActions:
+              type: array
+              title: disciplinaryActions
+              items:
+                type: object
+                title: disciplinaryAction
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  startDate:
+                    type: string
+                  EndDate:
+                    type: string
+            suspensions:
+              type: array
+              title: suspensions
+              items:
+                type: object
+                title: suspension
+                properties:
+                  name:
+                    type: string
+                  startDate:
+                    type: string
+                  endDate:
+                    type: string
+            prosecutions:
+              type: array
+              title: prosecutions
+              items:
+                type: object
+                title: prosecution
+                properties:
+                  isActive:
+                    type: string
+                  offence:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  court:
+                    type: string
+                  result:
+                    type: string
+            infringementNotices:
+              type: array
+              title: infringementNotices
+              items:
+                type: object
+                title: infringementNotice
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+            ctttOrders:
+              type: array
+              title: ctttOrders
+              items:
+                type: object
+                title: ctttOrder
+                properties:
+                  judgementDate:
+                    type: string
+                  complyByDate:
+                    type: string
+            publicWarnings:
+              type: array
+              title: publicWarnings
+              items:
+                type: object
+                title: publicWarning
+                properties:
+                  isActive:
+                    type: string
+                  publicWarningText:
+                    type: string
+            publicWarningsCount:
+              type: integer
+            insuranceClaimCounts:
+              type: object
+              title: insuranceClaimCounts
+              properties:
+                claimCount:
+                  type: integer
+                claimCountOldScheme:
+                  type: integer
+                insuranceClaimsPaid:
+                  type: integer
+                statutoryInsuranceClaimsPaid:
+                  type: integer
+            cautionReprimandCount:
+              type: integer
+        venues:
+          type: array
+          title: venues
+          items:
+            type: object
+            title: venue
+            properties:
+              type:
+                type: string
+              address:
+                type: string
+        buildingSites:
+          type: object
+          title: buildingSites
+          properties:
+            address:
+              type: string
+            councilDANumber:
+              type: string
+            complyingDCNumber:
+              type: string
+            constructionCertificateNumber:
+              type: string
+            ownerBuilderWorkDescription:
+              type: string
+        drawDetails:
+          type: array
+          title: drawDetails
+          items:
+            type: object
+            title: drawDetail
+            properties:
+              drawDateTime:
+                type: string
+        lotteryDetails:
+          type: array
+          title: lotteryDetails
+          items:
+            type: object
+            title: lotteryDetail
+            properties:
+              lotteryName:
+                type: string
+        prizeDetails:
+          type: array
+          title: prizeDetails
+          items:
+            type: object
+            title: prizeDetail
+            properties:
+              totalValueOfPrizesInNSW:
+                type: string
+    internal_server_error_3:
+      type: object
+      title: internal_server_error
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Unable to search.
+    details_results_6:
+      type: object
+      title: details_results
+      properties:
+        licensingAgency:
+          type: object
+          title: licensingAgency
+          required:
+          - contactLink
+          - name
+          properties:
+            contactLink:
+              type: string
+              title: contactLink
+            name:
+              type: string
+              title: name
+        licenceDetail:
+          type: object
+          title: licenceDetail
+          properties:
+            addressType:
+              type: string
+              title: addressType
+            address:
+              type: string
+              title: address
+            licenceName:
+              type: string
+              title: licenceName
+            licenceNumber:
+              type: string
+              title: licenceNumber
+            licensee:
+              type: string
+              title: licensee
+            licenceType:
+              type: string
+              title: licenceType
+            licenseeBirthdate:
+              type: string
+              title: licenseeBirthdate
+            status:
+              type: string
+              title: status
+            licenceTypeName:
+              type: string
+              title: licenceTypeName
+            refusedDate:
+              type: string
+              title: refusedDate
+            startDate:
+              type: string
+              title: startDate
+            expiryDate:
+              type: string
+              title: expiryDate
+            licenceeABN:
+              type: string
+              title: licenceeABN
+            licenceeACN:
+              type: string
+              title: licenceeACN
+        licenceClasses:
+          type: array
+          title: licenceClasses
+          items:
+            type: object
+            title: licenceClass
+            properties:
+              className:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        conditions:
+          type: array
+          title: conditions
+          items:
+            type: object
+            title: condition
+            properties:
+              licenceClass:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        histories:
+          type: array
+          title: histories
+          items:
+            type: string
+        premises:
+          type: array
+          title: premises
+          items:
+            type: object
+            title: premise
+            properties:
+              type:
+                type: string
+              businessName:
+                type: string
+              businessAddress:
+                type: string
+        vehicleRegistrations:
+          type: array
+          title: vehicleRegistrations
+          items:
+            type: object
+            title: vehicleRegistration
+            properties:
+              vehicleRegistrationNumber:
+                type: string
+        businessNames:
+          type: array
+          title: businessNames
+          items:
+            type: object
+            title: businessName
+            properties:
+              businessName:
+                type: string
+        administration:
+          type: object
+          title: administration
+          properties:
+            manager:
+              type: object
+              title: manager
+              properties:
+                licenceNumber:
+                  type: string
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                dateAppointed:
+                  type: string
+            receiver:
+              type: object
+              title: receiver
+              properties:
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                phoneNumber:
+                  type: string
+                dateAppointed:
+                  type: string
+            administrators:
+              type: array
+              title: administrators
+              items:
+                type: object
+                title: administrator
+                properties:
+                  surname:
+                    type: string
+                  firstName:
+                    type: string
+                  dateAppointed:
+                    type: string
+                  dateCeased:
+                    type: string
+                  isActive:
+                    type: string
+        associatedLicences:
+          type: array
+          title: associatedLicences
+          items:
+            type: object
+            title: associatedLicence
+            properties:
+              name:
+                name: string
+              isActive:
+                type: string
+              licenceNumber:
+                type: string
+              licenceStatus:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        associatedParties:
+          type: array
+          title: associatedParties
+          items:
+            type: object
+            title: associatedParty
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              role:
+                type: string
+              dateOfBirth:
+                type: string
+              yearOfBirth:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              address:
+                type: string
+        complianceActions:
+          type: object
+          title: complianceActions
+          properties:
+            refusedRenewals:
+              type: array
+              title: refusedRenewals
+              items:
+                type: object
+                title: refusedRenewal
+                properties:
+                  dateRefused:
+                    type: string
+                  isActive:
+                    type: string
+            statusInstruction:
+              type: array
+              title: statusInstruction
+              items:
+                type: string
+            disciplinaryActions:
+              type: array
+              title: disciplinaryActions
+              items:
+                type: object
+                title: disciplinaryAction
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  startDate:
+                    type: string
+                  EndDate:
+                    type: string
+            suspensions:
+              type: array
+              title: suspensions
+              items:
+                type: object
+                title: suspension
+                properties:
+                  name:
+                    type: string
+                  startDate:
+                    type: string
+                  endDate:
+                    type: string
+            prosecutions:
+              type: array
+              title: prosecutions
+              items:
+                type: object
+                title: prosecution
+                properties:
+                  isActive:
+                    type: string
+                  offence:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  court:
+                    type: string
+                  result:
+                    type: string
+            infringementNotices:
+              type: array
+              title: infringementNotices
+              items:
+                type: object
+                title: infringementNotice
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+            ctttOrders:
+              type: array
+              title: ctttOrders
+              items:
+                type: object
+                title: ctttOrder
+                properties:
+                  judgementDate:
+                    type: string
+                  complyByDate:
+                    type: string
+            publicWarnings:
+              type: array
+              title: publicWarnings
+              items:
+                type: object
+                title: publicWarning
+                properties:
+                  isActive:
+                    type: string
+                  publicWarningText:
+                    type: string
+            publicWarningsCount:
+              type: integer
+            insuranceClaimCounts:
+              type: object
+              title: insuranceClaimCounts
+              properties:
+                claimCount:
+                  type: integer
+                claimCountOldScheme:
+                  type: integer
+                insuranceClaimsPaid:
+                  type: integer
+                statutoryInsuranceClaimsPaid:
+                  type: integer
+            cautionReprimandCount:
+              type: integer
+        venues:
+          type: array
+          title: venues
+          items:
+            type: object
+            title: venue
+            properties:
+              type:
+                type: string
+              address:
+                type: string
+        buildingSites:
+          type: object
+          title: buildingSites
+          properties:
+            address:
+              type: string
+            councilDANumber:
+              type: string
+            complyingDCNumber:
+              type: string
+            constructionCertificateNumber:
+              type: string
+            ownerBuilderWorkDescription:
+              type: string
+        drawDetails:
+          type: array
+          title: drawDetails
+          items:
+            type: object
+            title: drawDetail
+            properties:
+              drawDateTime:
+                type: string
+        lotteryDetails:
+          type: array
+          title: lotteryDetails
+          items:
+            type: object
+            title: lotteryDetail
+            properties:
+              lotteryName:
+                type: string
+        prizeDetails:
+          type: array
+          title: prizeDetails
+          items:
+            type: object
+            title: prizeDetail
+            properties:
+              totalValueOfPrizesInNSW:
+                type: string
+    bad_request_3:
+      type: object
+      title: bad_request
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Please provide a valid search term.
+    invalid_token_response_3:
+      type: object
+      title: invalid_token_response
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Invalid Access Token.
+    details_results_7:
+      type: object
+      title: details_results
+      properties:
+        licensingAgency:
+          type: object
+          title: licensingAgency
+          required:
+          - contactLink
+          - name
+          properties:
+            contactLink:
+              type: string
+              title: contactLink
+            name:
+              type: string
+              title: name
+        licenceDetail:
+          type: object
+          title: licenceDetail
+          properties:
+            addressType:
+              type: string
+              title: addressType
+            address:
+              type: string
+              title: address
+            licenceName:
+              type: string
+              title: licenceName
+            licenceNumber:
+              type: string
+              title: licenceNumber
+            licensee:
+              type: string
+              title: licensee
+            licenceType:
+              type: string
+              title: licenceType
+            licenseeBirthdate:
+              type: string
+              title: licenseeBirthdate
+            status:
+              type: string
+              title: status
+            licenceTypeName:
+              type: string
+              title: licenceTypeName
+            refusedDate:
+              type: string
+              title: refusedDate
+            startDate:
+              type: string
+              title: startDate
+            expiryDate:
+              type: string
+              title: expiryDate
+            licenceeABN:
+              type: string
+              title: licenceeABN
+            licenceeACN:
+              type: string
+              title: licenceeACN
+        licenceClasses:
+          type: array
+          title: licenceClasses
+          items:
+            type: object
+            title: licenceClass
+            properties:
+              className:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              conditions:
+                type: array
+                title: conditions
+                items:
+                  type: object
+                  title: condition
+                  properties:
+                    licenceClass:
+                      type: string
+                    isActive:
+                      type: string
+                    description:
+                      type: string
+                    startDate:
+                      type: string
+                    endDate:
+                      type: string
+        conditions:
+          type: array
+          title: conditions
+          items:
+            type: object
+            title: condition
+            properties:
+              licenceClass:
+                type: string
+              isActive:
+                type: string
+              description:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        histories:
+          type: array
+          title: histories
+          items:
+            type: string
+        premises:
+          type: array
+          title: premises
+          items:
+            type: object
+            title: premise
+            properties:
+              type:
+                type: string
+              businessName:
+                type: string
+              businessAddress:
+                type: string
+        vehicleRegistrations:
+          type: array
+          title: vehicleRegistrations
+          items:
+            type: object
+            title: vehicleRegistration
+            properties:
+              vehicleRegistrationNumber:
+                type: string
+        businessNames:
+          type: array
+          title: businessNames
+          items:
+            type: object
+            title: businessName
+            properties:
+              businessName:
+                type: string
+        administration:
+          type: object
+          title: administration
+          properties:
+            manager:
+              type: object
+              title: manager
+              properties:
+                licenceNumber:
+                  type: string
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                dateAppointed:
+                  type: string
+            receiver:
+              type: object
+              title: receiver
+              properties:
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                phoneNumber:
+                  type: string
+                dateAppointed:
+                  type: string
+            administrators:
+              type: array
+              title: administrators
+              items:
+                type: object
+                title: administrator
+                properties:
+                  surname:
+                    type: string
+                  firstName:
+                    type: string
+                  dateAppointed:
+                    type: string
+                  dateCeased:
+                    type: string
+                  isActive:
+                    type: string
+        associatedLicences:
+          type: array
+          title: associatedLicences
+          items:
+            type: object
+            title: associatedLicence
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              licenceNumber:
+                type: string
+              licenceStatus:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+        associatedParties:
+          type: array
+          title: associatedParties
+          items:
+            type: object
+            title: associatedParty
+            properties:
+              name:
+                type: string
+              isActive:
+                type: string
+              role:
+                type: string
+              dateOfBirth:
+                type: string
+              yearOfBirth:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              address:
+                type: string
+        complianceActions:
+          type: object
+          title: complianceActions
+          properties:
+            refusedRenewals:
+              type: array
+              title: refusedRenewals
+              items:
+                type: object
+                title: refusedRenewal
+                properties:
+                  dateRefused:
+                    type: string
+                  isActive:
+                    type: string
+            statusInstruction:
+              type: array
+              title: statusInstruction
+              items:
+                type: string
+            disciplinaryActions:
+              type: array
+              title: disciplinaryActions
+              items:
+                type: object
+                title: disciplinaryAction
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  startDate:
+                    type: string
+                  EndDate:
+                    type: string
+            suspensions:
+              type: array
+              title: suspensions
+              items:
+                type: object
+                title: suspension
+                properties:
+                  name:
+                    type: string
+                  startDate:
+                    type: string
+                  endDate:
+                    type: string
+            prosecutions:
+              type: array
+              title: prosecutions
+              items:
+                type: object
+                title: prosecution
+                properties:
+                  isActive:
+                    type: string
+                  offence:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+                  court:
+                    type: string
+                  result:
+                    type: string
+            infringementNotices:
+              type: array
+              title: infringementNotices
+              items:
+                type: object
+                title: infringementNotice
+                properties:
+                  name:
+                    type: string
+                  section:
+                    type: string
+                  act:
+                    type: string
+                  penalty:
+                    type: string
+                  date:
+                    type: string
+            ctttOrders:
+              type: array
+              title: ctttOrders
+              items:
+                type: object
+                title: ctttOrder
+                properties:
+                  judgementDate:
+                    type: string
+                  complyByDate:
+                    type: string
+            publicWarnings:
+              type: array
+              title: publicWarnings
+              items:
+                type: object
+                title: publicWarning
+                properties:
+                  isActive:
+                    type: string
+                  publicWarningText:
+                    type: string
+            publicWarningsCount:
+              type: integer
+            insuranceClaimCounts:
+              type: object
+              title: insuranceClaimCounts
+              properties:
+                claimCount:
+                  type: integer
+                claimCountOldScheme:
+                  type: integer
+                insuranceClaimsPaid:
+                  type: integer
+                statutoryInsuranceClaimsPaid:
+                  type: integer
+            cautionReprimandCount:
+              type: integer
+        venues:
+          type: array
+          title: venues
+          items:
+            type: object
+            title: venue
+            properties:
+              type:
+                type: string
+              address:
+                type: string
+        buildingSites:
+          type: object
+          title: buildingSites
+          properties:
+            address:
+              type: string
+            councilDANumber:
+              type: string
+            complyingDCNumber:
+              type: string
+            constructionCertificateNumber:
+              type: string
+            ownerBuilderWorkDescription:
+              type: string
+        drawDetails:
+          type: array
+          title: drawDetails
+          items:
+            type: object
+            title: drawDetail
+            properties:
+              drawDateTime:
+                type: string
+        lotteryDetails:
+          type: array
+          title: lotteryDetails
+          items:
+            type: object
+            title: lotteryDetail
+            properties:
+              lotteryName:
+                type: string
+        prizeDetails:
+          type: array
+          title: prizeDetails
+          items:
+            type: object
+            title: prizeDetail
+            properties:
+              totalValueOfPrizesInNSW:
+                type: string
+x-refined-from:
+- open-government-new-south-wales-home-building-compensation-swagger.json
+- open-government-new-south-wales-pharmacy-register-swagger.json
+- open-government-new-south-wales-property-swagger.json
+- open-government-new-south-wales-security-swagger.json
+- open-government-new-south-wales-trades-swagger.json
+- open-government-new-south-wales-home-building-compensation-openapi.yml
+- open-government-new-south-wales-pharmacy-register-openapi.yml
+- open-government-new-south-wales-property-openapi.yml
+- open-government-new-south-wales-security-openapi.yml
+- open-government-new-south-wales-trades-openapi.yml

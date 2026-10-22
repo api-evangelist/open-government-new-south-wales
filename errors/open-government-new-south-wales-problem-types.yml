@@ -1,0 +1,36 @@
+generated: '2026-10-21'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/open-government-new-south-wales-fuel-openapi.yml
+- openapi/open-government-new-south-wales-home-building-compensation-openapi.yml
+- openapi/open-government-new-south-wales-pharmacy-register-openapi.yml
+- openapi/open-government-new-south-wales-property-openapi.yml
+- openapi/open-government-new-south-wales-security-openapi.yml
+- openapi/open-government-new-south-wales-trades-openapi.yml
+format: custom
+envelope:
+  media_type: null
+  schema: error_response
+coverage:
+  operations: 35
+  statuses_declared: 3
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad Request
+  operations: 29
+  media_types: []
+  schema: bad_request
+- status: 401
+  title: Unauthorized
+  description: Unauthorized
+  operations: 35
+  media_types: []
+  schema: invalid_token_response
+- status: 500
+  title: Internal Server Error
+  description: Internal Server Error
+  operations: 29
+  media_types: []
+  schema: internal_server_error

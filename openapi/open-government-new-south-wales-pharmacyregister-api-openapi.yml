@@ -1,0 +1,730 @@
+openapi: 3.2.0
+info:
+  title: Open Government New South Wales Pharmacyregister API
+  version: 1.0.0
+  contact: {}
+  description: 'Operations tagged Pharmacyregister across 2 of this provider''s published API definitions: open-government-new-south-wales-pharmacy-register-swagger.json, open-government-new-south-wales-pharmacy-register-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.onegov.nsw.gov.au/
+tags:
+- name: Pharmacyregister
+paths:
+  /pharmacyregister/v1/licence/search/query:
+    post:
+      tags:
+      - Pharmacyregister
+      description: Returns licences for the given search criteria.
+      summary: Search licences
+      deprecated: true
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: '''Bearer {token}'', where <b>{token}</b> is the value obtained from accesstoken call under security.'''
+        schema:
+          type: string
+          default: Bearer YOUR_ACCESS_TOKEN
+      - name: Content-Type
+        in: header
+        required: true
+        description: Content-Type should be 'application/json'
+        schema:
+          type: string
+          default: application/json
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+          default: YOUR_API_KEY
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/licences_search_response'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/licences_search_request'
+        required: true
+      operationId: postPharmacyregisterV1LicenceSearchQuery
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+  /pharmacyregister/v1/licence/search/details/pharmacy/{licenceId}:
+    get:
+      tags:
+      - Pharmacyregister
+      description: Returns licence details for the given licence type and identifier.
+      summary: Get licence details
+      deprecated: true
+      parameters:
+      - name: licenceId
+        in: path
+        required: true
+        description: Id of the licence, e.g. a835g000000sm33AAA
+        schema:
+          type: string
+          default: a835g000000sm33AAA
+      - name: Authorization
+        in: header
+        required: true
+        description: '''Bearer {token}'', where <b>{token}</b> is the value obtained from accesstoken call under security.'''
+        schema:
+          type: string
+          default: Bearer YOUR_ACCESS_TOKEN
+      - name: Content-Type
+        in: header
+        required: true
+        description: Content-Type should be 'application/json'
+        schema:
+          type: string
+          default: application/json
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+          default: YOUR_API_KEY
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/licence_details_response'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_response'
+      operationId: getPharmacyregisterV1LicenceSearchDetailsPharmacyByLicenceId
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+components:
+  schemas:
+    licences_search_response:
+      type: object
+      properties:
+        pagingInfo:
+          $ref: '#/components/schemas/paging_info'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence'
+      example:
+        pagingInfo:
+          currentPage: 20
+          totalPages: 21
+          pageSize: 10
+          totalRecords: 201
+        results:
+        - licenceId: '94621'
+          licenceNumber: AD210275
+          licenceType: Asbestos Removal Licence
+          licenceTypeFriendly: Asbestos Removal Licence
+          licenceGroup: ADL
+          licenceName: Peter Andrew Thorn
+          businessNames: Peter Thorn
+          status: Current
+          granted: '2010-07-22T00:00:00'
+          expires: '2022-07-22T00:00:00'
+          licensee: Peter Andrew Thorn
+          licenseeType: Individual
+          suburb: PORT MACQUARIE
+          state: NSW
+          postcode: '2444'
+          latitude: 152.91168076
+          longitude: 152.91168076
+          ABN: '30197693436'
+          SearchMetadata:
+            relevanceScore: 0
+    licence_notification:
+      type: object
+      properties:
+        sequence:
+          type: number
+        type:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+        relatedComponent:
+          type: string
+    error_response:
+      type: object
+      required:
+      - errorDetails
+      properties:
+        errorDetails:
+          type: object
+          required:
+          - code
+          - message
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    licence_associated_party_licence:
+      type: object
+      properties:
+        licenceId:
+          type: string
+        licenceNumber:
+          type: string
+        licenceType:
+          type: string
+        status:
+          type: string
+        expires:
+          type: string
+          format: date-time
+        role:
+          type: string
+        licensee:
+          type: string
+    search_paging:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+    licence_region_of_operation:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+    licence_location_premise:
+      type: object
+      properties:
+        licenseeInCharge:
+          type: string
+        name:
+          type: string
+        address:
+          type: string
+        suburb:
+          type: string
+        state:
+          type: string
+        postcode:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        lga:
+          type: string
+        pac:
+          type: string
+        workdesc:
+          type: string
+        danum:
+          type: string
+        area:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+    paging_info:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+        totalPages:
+          type: integer
+        pageSize:
+          type: integer
+        totalRecords:
+          type: integer
+    licences_search_request:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/search_filter'
+        sorting:
+          type: array
+          items:
+            $ref: '#/components/schemas/search_sorting'
+        paging:
+          $ref: '#/components/schemas/search_paging'
+      example:
+        filters:
+        - type: topic
+          params:
+            topic: Pharmacies
+          options:
+            autocomplete: false
+        - type: licenceType
+          params:
+            licenceType:
+            - Pharmacy
+          options:
+            autocomplete: false
+        sorting:
+        - type: relevanceScore
+          order: -1
+        paging:
+          pageNumber: 0
+          pageSize: 10
+    licence_details:
+      type: object
+      properties:
+        licenceId:
+          type: string
+        licenceNumber:
+          type: string
+        licenceType:
+          type: string
+        licenceTypeFriendly:
+          type: string
+        licenceGroup:
+          type: string
+        licenceName:
+          type: string
+        businessNames:
+          type: string
+        status:
+          type: string
+        statusReason:
+          type: string
+        granted:
+          type: string
+          format: date-time
+        expires:
+          type: string
+          format: date-time
+        term:
+          type: string
+        licencee:
+          type: string
+        licenceeType:
+          type: string
+        suburb:
+          type: string
+        state:
+          type: string
+        postcode:
+          type: string
+        address:
+          type: string
+        addressType:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        abn:
+          type: string
+        acn:
+          type: string
+        abrn:
+          type: string
+        yinc:
+          type: string
+        hinNumber:
+          type: string
+        hullType:
+          type: string
+        constructionMaterial:
+          type: string
+        colour:
+          type: string
+        length:
+          type: number
+        insurance:
+          $ref: '#/components/schemas/licence_insurance'
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_notification'
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_condition'
+        classes:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_class'
+        associatedParties:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_associated_party'
+        compliances:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_compliance'
+        regionsOfOperation:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_region_of_operation'
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_location'
+        history:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_history'
+    search_sorting:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        order:
+          type: integer
+    licence_associated_party:
+      type: object
+      properties:
+        name:
+          type: string
+        website:
+          type: string
+        birthYear:
+          type: string
+        address:
+          type: string
+        suburb:
+          type: string
+        state:
+          type: string
+        postcode:
+          type: string
+        abn:
+          type: string
+        acn:
+          type: string
+        yinc:
+          type: string
+        contact:
+          type: string
+        email:
+          type: string
+        dob:
+          type: string
+          format: date
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_associated_party_role'
+        licences:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_associated_party_licence'
+    licence_insurance:
+      type: object
+      properties:
+        type:
+          type: string
+        count:
+          type: number
+    licence_location:
+      type: object
+      properties:
+        type:
+          type: string
+        premises:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_location_premise'
+    licence:
+      type: object
+      properties:
+        licenceId:
+          type: string
+        licenceNumber:
+          type: string
+        licenceType:
+          type: string
+        licenceTypeFriendly:
+          type: string
+        licenceGroup:
+          type: string
+        licenceName:
+          type: string
+        businessNames:
+          type: string
+        status:
+          type: string
+        statusReason:
+          type: string
+        granted:
+          type: string
+          format: date-time
+        expires:
+          type: string
+          format: date-time
+        term:
+          type: string
+        licencee:
+          type: string
+        licenceeType:
+          type: string
+        suburb:
+          type: string
+        state:
+          type: string
+        postcode:
+          type: string
+        address:
+          type: string
+        addressType:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        abn:
+          type: string
+        acn:
+          type: string
+        abrn:
+          type: string
+        yinc:
+          type: string
+        SearchMetadata:
+          $ref: '#/components/schemas/search_metadata'
+    licence_compliance:
+      type: object
+      properties:
+        sequence:
+          type: number
+        type:
+          type: string
+        description:
+          type: string
+        issueDate:
+          type: string
+          format: date-time
+        judgementDate:
+          type: string
+          format: date-time
+        complyByDate:
+          type: string
+          format: date-time
+        dateCompletion:
+          type: string
+          format: date-time
+        authority:
+          type: string
+        reference:
+          type: string
+        amount:
+          type: string
+        reason:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        duration:
+          type: number
+        offence:
+          type: string
+        court:
+          type: string
+        result:
+          type: string
+        convictionDate:
+          type: string
+          format: date-time
+        settlementAmount:
+          type: string
+        dateClaimed:
+          type: string
+          format: date-time
+    licence_history:
+      type: object
+      properties:
+        sequence:
+          type: integer
+        eventType:
+          type: string
+        eventColor:
+          type: string
+        title:
+          type: string
+        descriptions:
+          type: array
+          items:
+            type: object
+            properties:
+              short:
+                type: string
+              full:
+                type: array
+                items:
+                  type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+    licence_class:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        isActive:
+          type: boolean
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/licence_condition'
+    licence_associated_party_role:
+      type: object
+      properties:
+        role:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        isActive:
+          type: boolean
+    search_filter:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+        params:
+          type: object
+        options:
+          type: object
+    search_metadata:
+      type: object
+      properties:
+        relevanceScore:
+          type: number
+    licence_condition:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        isActive:
+          type: boolean
+    licence_details_response:
+      type: object
+      properties:
+        pageConfig:
+          type: object
+        componentData:
+          $ref: '#/components/schemas/licence_details'
+      example:
+        pageConfig: {}
+        componentData:
+          licenceId: a835g000000sm33AAA
+          licenceNumber: PC0030321
+          licenceType: Pharmacy
+          licenceTypeFriendly: Pharmacy
+          licenceGroup: Pharmacies
+          businessNames: Priceline Pharmacy Randwick
+          status: Current
+          granted: '2021-06-30T00:00:00'
+          expires: '2022-06-30T00:00:00'
+          term: 1 year
+          licensee: Priceline Pharmacy Randwick
+          licenseeType: Organisation
+          suburb: RANDWICK
+          state: NSW
+          postcode: '2031'
+          addressType: Business
+          latitude: -33.914
+          longitude: 151.24
+          length: 0
+          notifications: []
+          conditions: []
+          classes: []
+          compliances: []
+          regionsOfOperation: []
+          locations:
+          - type: Business
+            premises:
+            - name: Priceline Pharmacy Randwick
+              address: Shops 1 & 2 57-63 Belmore Road RANDWICK NSW 2031
+              suburb: RANDWICK
+              state: NSW
+              postcode: '2031'
+              latitude: -33.914
+              longitude: 151.24
+          history: []
+x-refined-from:
+- open-government-new-south-wales-pharmacy-register-swagger.json
+- open-government-new-south-wales-pharmacy-register-openapi.yml

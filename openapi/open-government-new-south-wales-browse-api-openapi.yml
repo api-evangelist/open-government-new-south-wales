@@ -1,0 +1,448 @@
+openapi: 3.2.0
+info:
+  title: Open Government New South Wales Browse API
+  contact: {}
+  version: '1.0'
+  description: 'Operations tagged Browse across 10 of this provider''s published API definitions: open-government-new-south-wales-home-building-compensation-swagger.json, open-government-new-south-wales-pharmacy-register-swagger.json, open-government-new-south-wales-property-swagger.json, open-government-new-south-wales-security-swagger.json, open-government-new-south-wales-trades-swagger.json, open-government-new-south-wales-home-building-compensation-openapi.yml, open-government-new-south-wales-pharmacy-register-openapi.yml, open-government-new-south-wales-property-openapi.yml, open-government-new-south-wales-security-openapi.yml, open-government-new-south-wales-trades-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.onegov.nsw.gov.au/
+- url: https://api.onegov.nsw.gov.au
+tags:
+- name: Browse
+paths:
+  /hbccheckregister/v1/browse:
+    get:
+      tags:
+      - Browse
+      description: Provides the user with a search option to enter in partial information and returns a list of the search.
+      summary: Browse Get Method
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        schema:
+          type: string
+          default: Bearer {token}
+      - name: searchText
+        in: query
+        required: true
+        description: The collection of words to be searched for. The minimum word length is two characters, noise words such as 'and', 'or' and 'the' are discarded. Most punctuation characters are discarded, the dash [-] and apostrophe [&#39;] characters being the only exceptions
+        schema:
+          type: string
+          default: Real Estate
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/browse_results'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invalid_token_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error'
+      operationId: getHbccheckregisterV1Browse
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+  /pharmacyregister/v1/browse:
+    get:
+      tags:
+      - Browse
+      description: Provides the consumer with a search option to enter in partial information and returns a list of the search.
+      summary: Browse Get Method
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        schema:
+          type: string
+          default: Bearer {token}
+      - name: searchText
+        in: query
+        required: true
+        description: The collection of words to be searched for. The minimum word length is two characters, noise words such as 'and', 'or' and 'the' are discarded. Most punctuation characters are discarded, the dash [-] and apostrophe [&#39;] characters being the only exceptions
+        schema:
+          type: string
+          default: JOHN
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/browse_results'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invalid_token_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error'
+      operationId: getPharmacyregisterV1Browse
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+  /propertyregister/v1/browse:
+    get:
+      tags:
+      - Browse
+      description: Provides the consumer with a search option to enter in partial information and returns a list of the search.
+      summary: Browse Get Method
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        schema:
+          type: string
+          default: Bearer {token}
+      - name: searchText
+        in: query
+        required: true
+        description: The collection of words to be searched for. The minimum word length is two characters, noise words such as 'and', 'or' and 'the' are discarded. Most punctuation characters are discarded, the dash [-] and apostrophe [&#39;] characters being the only exceptions
+        schema:
+          type: string
+          default: Real Estate
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/browse_results'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invalid_token_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error'
+      operationId: getPropertyregisterV1Browse
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+  /securityregister/v1/browse:
+    get:
+      tags:
+      - Browse
+      description: Provides the consumer with a search option to enter in partial information and returns a list of the search.
+      summary: Browse Get Method
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        value: Bearer {token}
+        schema:
+          type: string
+      - name: searchText
+        in: query
+        required: true
+        value: aus
+        description: The collection of words to be searched for. The minimum word length is two characters, noise words such as 'and', 'or' and 'the' are discarded. Most punctuation characters are discarded, the dash [-] and apostrophe [&#39;] characters being the only exceptions
+        schema:
+          type: string
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/browse_results'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bad_request_2'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invalid_token_response_2'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error_2'
+      operationId: getSecurityregisterV1Browse
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au
+  /tradesregister/v1/browse:
+    get:
+      tags:
+      - Browse
+      description: Provides the consumer with a search option to enter in partial information and returns a list of the search.
+      summary: Browse Get Method
+      deprecated: false
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        schema:
+          type: string
+          default: Bearer {token}
+      - name: searchText
+        in: query
+        required: true
+        description: The collection of words to be searched for. The minimum word length is two characters, noise words such as 'and', 'or' and 'the' are discarded. Most punctuation characters are discarded, the dash [-] and apostrophe [&#39;] characters being the only exceptions
+        schema:
+          type: string
+          default: TELECOM
+      - name: apikey
+        in: header
+        required: true
+        description: Api key value obtained from your approved app.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/browse_results'
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bad_request'
+        '401':
+          description: Unauthorized
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/invalid_token_response'
+        '500':
+          description: Internal Server Error
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_server_error'
+      operationId: getTradesregisterV1Browse
+      x-operation-id-source: derived
+    servers:
+    - url: https://api.onegov.nsw.gov.au/
+components:
+  schemas:
+    internal_server_error:
+      type: object
+      title: internal_server_error
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          example:
+          - Unable to search.
+    browse_results:
+      type: array
+      items:
+        type: object
+        title: object
+        properties:
+          licenceID:
+            type: string
+          licensee:
+            type: string
+          licenceName:
+            type: string
+          licenceNumber:
+            type: string
+          licenceType:
+            type: string
+          status:
+            type: string
+          suburb:
+            type: string
+          postcode:
+            type: string
+          businessNames:
+            type: string
+          categories:
+            type: string
+          classes:
+            type: string
+    bad_request:
+      type: object
+      title: bad_request
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          example:
+          - Please provide a valid search term.
+    invalid_token_response:
+      type: object
+      title: invalid_token_response
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          example:
+          - Invalid Access Token.
+    internal_server_error_2:
+      type: object
+      title: internal_server_error
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Unable to search.
+    bad_request_2:
+      type: object
+      title: bad_request
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Please provide a valid search term.
+    invalid_token_response_2:
+      type: object
+      title: invalid_token_response
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Invalid Access Token.
+    internal_server_error_3:
+      type: object
+      title: internal_server_error
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Unable to search.
+    bad_request_3:
+      type: object
+      title: bad_request
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Please provide a valid search term.
+    invalid_token_response_3:
+      type: object
+      title: invalid_token_response
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          examples:
+          - Invalid Access Token.
+x-refined-from:
+- open-government-new-south-wales-home-building-compensation-swagger.json
+- open-government-new-south-wales-pharmacy-register-swagger.json
+- open-government-new-south-wales-property-swagger.json
+- open-government-new-south-wales-security-swagger.json
+- open-government-new-south-wales-trades-swagger.json
+- open-government-new-south-wales-home-building-compensation-openapi.yml
+- open-government-new-south-wales-pharmacy-register-openapi.yml
+- open-government-new-south-wales-property-openapi.yml
+- open-government-new-south-wales-security-openapi.yml
+- open-government-new-south-wales-trades-openapi.yml

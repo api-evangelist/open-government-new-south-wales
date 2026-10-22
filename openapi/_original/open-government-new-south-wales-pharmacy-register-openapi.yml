@@ -1,0 +1,1451 @@
+# x-archived-from: open-government-new-south-wales-pharmacy-register-openapi.yml
+# x-archived-on: 2026-10-21
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Pharmacy Register API
+  description: 'The Pharmacy Council of NSW approves pharmacy premises in NSW and maintains a Register of Pharmacies and financial interest holders of NSW pharmacies.
+
+    Search for a NSW pharmacy by name or registration number, or search by suburb or postcode for all pharmacies in an area.'
+  contact: {}
+host: api.onegov.nsw.gov.au
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /oauth/client_credential/accesstoken:
+    get:
+      tags:
+      - Security
+      description: The client can request an access token using only its client credentials (or other supported means of authentication) when the client is requesting access to the protected resources under its control, or those of another resource owner that have been previously arranged with the authorization server.
+      summary: Oauth
+      operationId: OauthClientCredentialAccesstokenGet
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: grant_type
+        required: true
+        type: string
+        description: client_credentials
+        default: client_credentials
+      - in: header
+        name: Authorization
+        required: true
+        type: string
+        description: Base64 encoded value of <b>api_key:api_secret</b>. Eg 'Basic {Base64 encoded value of <b>api_key:api_secret</b>}'
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/access_token_response'
+          description: Success
+          headers: {}
+        '401':
+          schema:
+            $ref: '#/definitions/access_token_failed_response'
+          description: Unauthorized
+          headers: {}
+      security: []
+  /pharmacyregister/v1/browse:
+    get:
+      tags:
+      - Browse
+      description: Provides the consumer with a search option to enter in partial information and returns a list of the search.
+      summary: Browse Get Method
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        default: Bearer {token}
+        type: string
+      - name: searchText
+        in: query
+        required: true
+        type: string
+        default: JOHN
+        description: The collection of words to be searched for. The minimum word length is two characters, noise words such as 'and', 'or' and 'the' are discarded. Most punctuation characters are discarded, the dash [-] and apostrophe [&#39;] characters being the only exceptions
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: Api key value obtained from your approved app.
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/browse_results'
+          description: Success
+          headers: {}
+        '400':
+          schema:
+            $ref: '#/definitions/bad_request'
+          description: Bad Request
+          headers: {}
+        '401':
+          schema:
+            $ref: '#/definitions/invalid_token_response'
+          description: Unauthorized
+          headers: {}
+        '500':
+          schema:
+            $ref: '#/definitions/internal_server_error'
+          description: Internal Server Error
+          headers: {}
+  /pharmacyregister/v1/verify:
+    get:
+      tags:
+      - Verify
+      description: Provides the consumer with a search option to enter in partial information and returns a list of the search. It is used for quick verification of a licence.
+      summary: Verify Get Method
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: licenceNumber
+        in: query
+        required: true
+        type: string
+        default: PC0001552
+        description: The licence number to be verified.
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        default: Bearer {token}
+        type: string
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: Api key value obtained from your approved app.
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/verify_results'
+          description: Success
+          headers: {}
+        '400':
+          schema:
+            $ref: '#/definitions/bad_request'
+          description: Bad Request
+          headers: {}
+        '401':
+          schema:
+            $ref: '#/definitions/invalid_token_response'
+          description: Unauthorized
+          headers: {}
+        '500':
+          schema:
+            $ref: '#/definitions/internal_server_error'
+          description: Internal Server Error
+          headers: {}
+  /pharmacyregister/v1/details:
+    get:
+      tags:
+      - Details
+      description: Provides a set of detailed information about the individual licence selected that corresponds to the level of information seen on the detailed screen of the Public Register application.
+      summary: Details Get Method
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security.
+        default: Bearer {token}
+        type: string
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: Api key value obtained from your approved app.
+      - name: licenceid
+        in: query
+        required: true
+        type: string
+        default: a835g000000slPUAAY
+        description: The 'licenceId' value for a licence returned by a browse or verify request. Every licence in the OneGov system is given a unique identifier. This item contains that unique identifier.
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/details_results'
+          description: Success
+          headers: {}
+        '400':
+          schema:
+            $ref: '#/definitions/bad_request'
+          description: Bad Request
+          headers: {}
+        '401':
+          schema:
+            $ref: '#/definitions/invalid_token_response'
+          description: Unauthorized
+          headers: {}
+        '500':
+          schema:
+            $ref: '#/definitions/internal_server_error'
+          description: Internal Server Error
+          headers: {}
+  /pharmacyregister/v1/licence/search/query:
+    post:
+      tags:
+      - v1
+      description: Returns licences for the given search criteria.
+      summary: Search licences
+      deprecated: true
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: '''Bearer {token}'', where <b>{token}</b> is the value obtained from accesstoken call under security.'''
+        type: string
+        default: Bearer YOUR_ACCESS_TOKEN
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: Content-Type should be 'application/json'
+        default: application/json
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: Api key value obtained from your approved app.
+        default: YOUR_API_KEY
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/licences_search_request'
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/licences_search_response'
+          description: Success
+          headers: {}
+        '400':
+          schema:
+            $ref: '#/definitions/error_response'
+          description: Bad Request
+          headers: {}
+        '401':
+          schema:
+            $ref: '#/definitions/error_response'
+          description: Unauthorized
+          headers: {}
+        '500':
+          schema:
+            $ref: '#/definitions/error_response'
+          description: Internal Server Error
+          headers: {}
+  /pharmacyregister/v1/licence/search/details/pharmacy/{licenceId}:
+    get:
+      tags:
+      - v1
+      description: Returns licence details for the given licence type and identifier.
+      summary: Get licence details
+      deprecated: true
+      produces:
+      - application/json
+      parameters:
+      - name: licenceId
+        in: path
+        required: true
+        type: string
+        description: Id of the licence, e.g. a835g000000sm33AAA
+        default: a835g000000sm33AAA
+      - name: Authorization
+        in: header
+        required: true
+        description: '''Bearer {token}'', where <b>{token}</b> is the value obtained from accesstoken call under security.'''
+        type: string
+        default: Bearer YOUR_ACCESS_TOKEN
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: Content-Type should be 'application/json'
+        default: application/json
+      - name: apikey
+        in: header
+        required: true
+        type: string
+        description: Api key value obtained from your approved app.
+        default: YOUR_API_KEY
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/licence_details_response'
+          description: Success
+          headers: {}
+        '400':
+          schema:
+            $ref: '#/definitions/error_response'
+          description: Bad Request
+          headers: {}
+        '401':
+          schema:
+            $ref: '#/definitions/error_response'
+          description: Unauthorized
+          headers: {}
+        '500':
+          schema:
+            $ref: '#/definitions/error_response'
+          description: Internal Server Error
+          headers: {}
+definitions:
+  internal_server_error:
+    type: object
+    title: internal_server_error
+    required:
+    - message
+    properties:
+      message:
+        type: string
+        example:
+        - Unable to search.
+  bad_request:
+    type: object
+    title: bad_request
+    required:
+    - message
+    properties:
+      message:
+        type: string
+        example:
+        - Please provide a valid search term.
+  invalid_token_response:
+    type: object
+    title: invalid_token_response
+    required:
+    - message
+    properties:
+      message:
+        type: string
+        example:
+        - Invalid Access Token.
+  access_token_failed_response:
+    type: object
+    title: access_token_failed_response
+    required:
+    - ErrorCode
+    - Error
+    properties:
+      ErrorCode:
+        type: string
+        example: invalid_client
+      Error:
+        type: string
+        example: Client credentials are invalid
+  access_token_response:
+    type: object
+    title: access_token_response
+    required:
+    - refresh_token_expires_in
+    - api_product_list
+    - api_product_list_json
+    - organization_name
+    - developer.email
+    - token_type
+    - issued_at
+    - client_id
+    - access_token
+    - application_name
+    - scope
+    - expires_in
+    - refresh_count
+    - status
+    properties:
+      refresh_token_expires_in:
+        type: string
+      api_product_list_json:
+        type: array
+        items:
+          type: string
+      organization_name:
+        type: string
+        example: onegov
+      developer.email:
+        type: string
+      token_type:
+        type: string
+        example: BearerToken
+      issued_at:
+        type: string
+        example: '1569816768267'
+      client_id:
+        type: string
+      access_token:
+        type: string
+      application_name:
+        type: string
+      scope:
+        type: string
+      expires_in:
+        type: string
+      refresh_count:
+        type: string
+      status:
+        type: string
+        example: approved
+  error_response:
+    type: object
+    required:
+    - errorDetails
+    properties:
+      errorDetails:
+        type: object
+        required:
+        - code
+        - message
+        properties:
+          code:
+            type: string
+          message:
+            type: string
+  browse_results:
+    type: array
+    items:
+      type: object
+      title: object
+      properties:
+        licenceID:
+          type: string
+        licensee:
+          type: string
+        licenceName:
+          type: string
+        licenceNumber:
+          type: string
+        licenceType:
+          type: string
+        status:
+          type: string
+        suburb:
+          type: string
+        postcode:
+          type: string
+        businessNames:
+          type: string
+        categories:
+          type: string
+        classes:
+          type: string
+  verify_results:
+    type: array
+    title: verify_results
+    items:
+      type: object
+      title: object
+      properties:
+        licenceID:
+          type: string
+        licenceNumber:
+          type: string
+        status:
+          type: string
+        startDate:
+          type: string
+        expiryDate:
+          type: string
+        refusedDate:
+          type: string
+        licenceType:
+          type: string
+        licenceName:
+          type: string
+        licensee:
+          type: string
+        address:
+          type: string
+        vehicleRegistration:
+          type: string
+        businessNames:
+          type: string
+        categories:
+          type: string
+        classes:
+          type: string
+        suburb:
+          type: string
+        postcode:
+          type: string
+  details_results:
+    type: object
+    title: details_results
+    properties:
+      licensingAgency:
+        type: object
+        title: licensingAgency
+        required:
+        - contactLink
+        - name
+        properties:
+          contactLink:
+            type: string
+            title: contactLink
+          name:
+            type: string
+            title: name
+      licenceDetail:
+        type: object
+        title: licenceDetail
+        properties:
+          addressType:
+            type: string
+            title: addressType
+          address:
+            type: string
+            title: address
+          licenceName:
+            type: string
+            title: licenceName
+          licenceNumber:
+            type: string
+            title: licenceNumber
+          licensee:
+            type: string
+            title: licensee
+          licenceType:
+            type: string
+            title: licenceType
+          licenseeBirthdate:
+            type: string
+            title: licenseeBirthdate
+          status:
+            type: string
+            title: status
+          licenceTypeName:
+            type: string
+            title: licenceTypeName
+          refusedDate:
+            type: string
+            title: refusedDate
+          startDate:
+            type: string
+            title: startDate
+          expiryDate:
+            type: string
+            title: expiryDate
+          licenceeABN:
+            type: string
+            title: licenceeABN
+          licenceeACN:
+            type: string
+            title: licenceeACN
+      licenceClasses:
+        type: array
+        title: licenceClasses
+        items:
+          type: object
+          title: licenceClass
+          properties:
+            className:
+              type: string
+            isActive:
+              type: string
+            description:
+              type: string
+            startDate:
+              type: string
+            endDate:
+              type: string
+      conditions:
+        type: array
+        title: conditions
+        items:
+          type: object
+          title: condition
+          properties:
+            licenceClass:
+              type: string
+            isActive:
+              type: string
+            description:
+              type: string
+            startDate:
+              type: string
+            endDate:
+              type: string
+      histories:
+        type: array
+        title: histories
+        items:
+          type: string
+      premises:
+        type: array
+        title: premises
+        items:
+          type: object
+          title: premise
+          properties:
+            type:
+              type: string
+            businessName:
+              type: string
+            businessAddress:
+              type: string
+      vehicleRegistrations:
+        type: array
+        title: vehicleRegistrations
+        items:
+          type: object
+          title: vehicleRegistration
+          properties:
+            vehicleRegistrationNumber:
+              type: string
+      businessNames:
+        type: array
+        title: businessNames
+        items:
+          type: object
+          title: businessName
+          properties:
+            businessName:
+              type: string
+      administration:
+        type: object
+        title: administration
+        properties:
+          manager:
+            type: object
+            title: manager
+            properties:
+              licenceNumber:
+                type: string
+              surname:
+                type: string
+              firstName:
+                type: string
+              dateAppointed:
+                type: string
+          receiver:
+            type: object
+            title: receiver
+            properties:
+              surname:
+                type: string
+              firstName:
+                type: string
+              phoneNumber:
+                type: string
+              dateAppointed:
+                type: string
+          administrators:
+            type: array
+            title: administrators
+            items:
+              type: object
+              title: administrator
+              properties:
+                surname:
+                  type: string
+                firstName:
+                  type: string
+                dateAppointed:
+                  type: string
+                dateCeased:
+                  type: string
+                isActive:
+                  type: string
+      associatedLicences:
+        type: array
+        title: associatedLicences
+        items:
+          type: object
+          title: associatedLicence
+          properties:
+            name:
+              type: string
+            isActive:
+              type: string
+            licenceNumber:
+              type: string
+            licenceStatus:
+              type: string
+            startDate:
+              type: string
+            endDate:
+              type: string
+      associatedParties:
+        type: array
+        title: associatedParties
+        items:
+          type: object
+          title: associatedParty
+          properties:
+            name:
+              type: string
+            isActive:
+              type: string
+            role:
+              type: string
+            dateOfBirth:
+              type: string
+            yearOfBirth:
+              type: string
+            startDate:
+              type: string
+            endDate:
+              type: string
+            address:
+              type: string
+      complianceActions:
+        type: object
+        title: complianceActions
+        properties:
+          refusedRenewals:
+            type: array
+            title: refusedRenewals
+            items:
+              type: object
+              title: refusedRenewal
+              properties:
+                dateRefused:
+                  type: string
+                isActive:
+                  type: string
+          statusInstruction:
+            type: array
+            title: statusInstruction
+            items:
+              type: string
+          disciplinaryActions:
+            type: array
+            title: disciplinaryActions
+            items:
+              type: object
+              title: disciplinaryAction
+              properties:
+                name:
+                  type: string
+                section:
+                  type: string
+                act:
+                  type: string
+                penalty:
+                  type: string
+                date:
+                  type: string
+                startDate:
+                  type: string
+                EndDate:
+                  type: string
+          suspensions:
+            type: array
+            title: suspensions
+            items:
+              type: object
+              title: suspension
+              properties:
+                name:
+                  type: string
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+          prosecutions:
+            type: array
+            title: prosecutions
+            items:
+              type: object
+              title: prosecution
+              properties:
+                isActive:
+                  type: string
+                offence:
+                  type: string
+                section:
+                  type: string
+                act:
+                  type: string
+                penalty:
+                  type: string
+                date:
+                  type: string
+                court:
+                  type: string
+                result:
+                  type: string
+          infringementNotices:
+            type: array
+            title: infringementNotices
+            items:
+              type: object
+              title: infringementNotice
+              properties:
+                name:
+                  type: string
+                section:
+                  type: string
+                act:
+                  type: string
+                penalty:
+                  type: string
+                date:
+                  type: string
+          ctttOrders:
+            type: array
+            title: ctttOrders
+            items:
+              type: object
+              title: ctttOrder
+              properties:
+                judgementDate:
+                  type: string
+                complyByDate:
+                  type: string
+          publicWarnings:
+            type: array
+            title: publicWarnings
+            items:
+              type: object
+              title: publicWarning
+              properties:
+                isActive:
+                  type: string
+                publicWarningText:
+                  type: string
+          publicWarningsCount:
+            type: integer
+          insuranceClaimCounts:
+            type: object
+            title: insuranceClaimCounts
+            properties:
+              claimCount:
+                type: integer
+              claimCountOldScheme:
+                type: integer
+              insuranceClaimsPaid:
+                type: integer
+              statutoryInsuranceClaimsPaid:
+                type: integer
+          cautionReprimandCount:
+            type: integer
+      venues:
+        type: array
+        title: venues
+        items:
+          type: object
+          title: venue
+          properties:
+            type:
+              type: string
+            address:
+              type: string
+      buildingSites:
+        type: object
+        title: buildingSites
+        properties:
+          address:
+            type: string
+          councilDANumber:
+            type: string
+          complyingDCNumber:
+            type: string
+          constructionCertificateNumber:
+            type: string
+          ownerBuilderWorkDescription:
+            type: string
+      drawDetails:
+        type: array
+        title: drawDetails
+        items:
+          type: object
+          title: drawDetail
+          properties:
+            drawDateTime:
+              type: string
+      lotteryDetails:
+        type: array
+        title: lotteryDetails
+        items:
+          type: object
+          title: lotteryDetail
+          properties:
+            lotteryName:
+              type: string
+      prizeDetails:
+        type: array
+        title: prizeDetails
+        items:
+          type: object
+          title: prizeDetail
+          properties:
+            totalValueOfPrizesInNSW:
+              type: string
+  licence:
+    type: object
+    properties:
+      licenceId:
+        type: string
+      licenceNumber:
+        type: string
+      licenceType:
+        type: string
+      licenceTypeFriendly:
+        type: string
+      licenceGroup:
+        type: string
+      licenceName:
+        type: string
+      businessNames:
+        type: string
+      status:
+        type: string
+      statusReason:
+        type: string
+      granted:
+        type: string
+        format: date-time
+      expires:
+        type: string
+        format: date-time
+      term:
+        type: string
+      licencee:
+        type: string
+      licenceeType:
+        type: string
+      suburb:
+        type: string
+      state:
+        type: string
+      postcode:
+        type: string
+      address:
+        type: string
+      addressType:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      abn:
+        type: string
+      acn:
+        type: string
+      abrn:
+        type: string
+      yinc:
+        type: string
+      SearchMetadata:
+        $ref: '#/definitions/search_metadata'
+  licence_associated_party:
+    type: object
+    properties:
+      name:
+        type: string
+      website:
+        type: string
+      birthYear:
+        type: string
+      address:
+        type: string
+      suburb:
+        type: string
+      state:
+        type: string
+      postcode:
+        type: string
+      abn:
+        type: string
+      acn:
+        type: string
+      yinc:
+        type: string
+      contact:
+        type: string
+      email:
+        type: string
+      dob:
+        type: string
+        format: date
+      roles:
+        type: array
+        items:
+          $ref: '#/definitions/licence_associated_party_role'
+      licences:
+        type: array
+        items:
+          $ref: '#/definitions/licence_associated_party_licence'
+  licence_associated_party_licence:
+    type: object
+    properties:
+      licenceId:
+        type: string
+      licenceNumber:
+        type: string
+      licenceType:
+        type: string
+      status:
+        type: string
+      expires:
+        type: string
+        format: date-time
+      role:
+        type: string
+      licensee:
+        type: string
+  licence_associated_party_role:
+    type: object
+    properties:
+      role:
+        type: string
+      startDate:
+        type: string
+        format: date-time
+      endDate:
+        type: string
+        format: date-time
+      isActive:
+        type: boolean
+  licence_class:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      startDate:
+        type: string
+        format: date-time
+      endDate:
+        type: string
+        format: date-time
+      isActive:
+        type: boolean
+      conditions:
+        type: array
+        items:
+          $ref: '#/definitions/licence_condition'
+  licence_condition:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      startDate:
+        type: string
+        format: date-time
+      endDate:
+        type: string
+        format: date-time
+      isActive:
+        type: boolean
+  licence_compliance:
+    type: object
+    properties:
+      sequence:
+        type: number
+      type:
+        type: string
+      description:
+        type: string
+      issueDate:
+        type: string
+        format: date-time
+      judgementDate:
+        type: string
+        format: date-time
+      complyByDate:
+        type: string
+        format: date-time
+      dateCompletion:
+        type: string
+        format: date-time
+      authority:
+        type: string
+      reference:
+        type: string
+      amount:
+        type: string
+      reason:
+        type: string
+      startDate:
+        type: string
+        format: date-time
+      endDate:
+        type: string
+        format: date-time
+      duration:
+        type: number
+      offence:
+        type: string
+      court:
+        type: string
+      result:
+        type: string
+      convictionDate:
+        type: string
+        format: date-time
+      settlementAmount:
+        type: string
+      dateClaimed:
+        type: string
+        format: date-time
+  licence_details:
+    type: object
+    properties:
+      licenceId:
+        type: string
+      licenceNumber:
+        type: string
+      licenceType:
+        type: string
+      licenceTypeFriendly:
+        type: string
+      licenceGroup:
+        type: string
+      licenceName:
+        type: string
+      businessNames:
+        type: string
+      status:
+        type: string
+      statusReason:
+        type: string
+      granted:
+        type: string
+        format: date-time
+      expires:
+        type: string
+        format: date-time
+      term:
+        type: string
+      licencee:
+        type: string
+      licenceeType:
+        type: string
+      suburb:
+        type: string
+      state:
+        type: string
+      postcode:
+        type: string
+      address:
+        type: string
+      addressType:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      abn:
+        type: string
+      acn:
+        type: string
+      abrn:
+        type: string
+      yinc:
+        type: string
+      hinNumber:
+        type: string
+      hullType:
+        type: string
+      constructionMaterial:
+        type: string
+      colour:
+        type: string
+      length:
+        type: number
+      insurance:
+        $ref: '#/definitions/licence_insurance'
+      notifications:
+        type: array
+        items:
+          $ref: '#/definitions/licence_notification'
+      conditions:
+        type: array
+        items:
+          $ref: '#/definitions/licence_condition'
+      classes:
+        type: array
+        items:
+          $ref: '#/definitions/licence_class'
+      associatedParties:
+        type: array
+        items:
+          $ref: '#/definitions/licence_associated_party'
+      compliances:
+        type: array
+        items:
+          $ref: '#/definitions/licence_compliance'
+      regionsOfOperation:
+        type: array
+        items:
+          $ref: '#/definitions/licence_region_of_operation'
+      locations:
+        type: array
+        items:
+          $ref: '#/definitions/licence_location'
+      history:
+        type: array
+        items:
+          $ref: '#/definitions/licence_history'
+  licence_details_response:
+    type: object
+    properties:
+      pageConfig:
+        type: object
+      componentData:
+        $ref: '#/definitions/licence_details'
+    example:
+      pageConfig: {}
+      componentData:
+        licenceId: a835g000000sm33AAA
+        licenceNumber: PC0030321
+        licenceType: Pharmacy
+        licenceTypeFriendly: Pharmacy
+        licenceGroup: Pharmacies
+        businessNames: Priceline Pharmacy Randwick
+        status: Current
+        granted: '2021-06-30T00:00:00'
+        expires: '2022-06-30T00:00:00'
+        term: 1 year
+        licensee: Priceline Pharmacy Randwick
+        licenseeType: Organisation
+        suburb: RANDWICK
+        state: NSW
+        postcode: '2031'
+        addressType: Business
+        latitude: -33.914
+        longitude: 151.24
+        length: 0
+        notifications: []
+        conditions: []
+        classes: []
+        compliances: []
+        regionsOfOperation: []
+        locations:
+        - type: Business
+          premises:
+          - name: Priceline Pharmacy Randwick
+            address: Shops 1 & 2 57-63 Belmore Road RANDWICK NSW 2031
+            suburb: RANDWICK
+            state: NSW
+            postcode: '2031'
+            latitude: -33.914
+            longitude: 151.24
+        history: []
+  licence_history:
+    type: object
+    properties:
+      sequence:
+        type: integer
+      eventType:
+        type: string
+      eventColor:
+        type: string
+      title:
+        type: string
+      descriptions:
+        type: array
+        items:
+          type: object
+          properties:
+            short:
+              type: string
+            full:
+              type: array
+              items:
+                type: string
+      startDate:
+        type: string
+        format: date-time
+      endDate:
+        type: string
+        format: date-time
+  licence_insurance:
+    type: object
+    properties:
+      type:
+        type: string
+      count:
+        type: number
+  licence_location:
+    type: object
+    properties:
+      type:
+        type: string
+      premises:
+        type: array
+        items:
+          $ref: '#/definitions/licence_location_premise'
+  licence_location_premise:
+    type: object
+    properties:
+      licenseeInCharge:
+        type: string
+      name:
+        type: string
+      address:
+        type: string
+      suburb:
+        type: string
+      state:
+        type: string
+      postcode:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      lga:
+        type: string
+      pac:
+        type: string
+      workdesc:
+        type: string
+      danum:
+        type: string
+      area:
+        type: string
+      startDate:
+        type: string
+        format: date-time
+  licence_notification:
+    type: object
+    properties:
+      sequence:
+        type: number
+      type:
+        type: string
+      description:
+        type: string
+      status:
+        type: string
+      relatedComponent:
+        type: string
+  licence_region_of_operation:
+    type: object
+    properties:
+      code:
+        type: string
+      name:
+        type: string
+  licences_search_request:
+    type: object
+    properties:
+      filters:
+        type: array
+        items:
+          $ref: '#/definitions/search_filter'
+      sorting:
+        type: array
+        items:
+          $ref: '#/definitions/search_sorting'
+      paging:
+        $ref: '#/definitions/search_paging'
+    example:
+      filters:
+      - type: topic
+        params:
+          topic: Pharmacies
+        options:
+          autocomplete: false
+      - type: licenceType
+        params:
+          licenceType:
+          - Pharmacy
+        options:
+          autocomplete: false
+      sorting:
+      - type: relevanceScore
+        order: -1
+      paging:
+        pageNumber: 0
+        pageSize: 10
+  licences_search_response:
+    type: object
+    properties:
+      pagingInfo:
+        $ref: '#/definitions/paging_info'
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/licence'
+    example:
+      pagingInfo:
+        currentPage: 20
+        totalPages: 21
+        pageSize: 10
+        totalRecords: 201
+      results:
+      - licenceId: '94621'
+        licenceNumber: AD210275
+        licenceType: Asbestos Removal Licence
+        licenceTypeFriendly: Asbestos Removal Licence
+        licenceGroup: ADL
+        licenceName: Peter Andrew Thorn
+        businessNames: Peter Thorn
+        status: Current
+        granted: '2010-07-22T00:00:00'
+        expires: '2022-07-22T00:00:00'
+        licensee: Peter Andrew Thorn
+        licenseeType: Individual
+        suburb: PORT MACQUARIE
+        state: NSW
+        postcode: '2444'
+        latitude: 152.91168076
+        longitude: 152.91168076
+        ABN: '30197693436'
+        SearchMetadata:
+          relevanceScore: 0
+  paging_info:
+    type: object
+    properties:
+      currentPage:
+        type: integer
+      totalPages:
+        type: integer
+      pageSize:
+        type: integer
+      totalRecords:
+        type: integer
+  search_filter:
+    type: object
+    required:
+    - type
+    properties:
+      type:
+        type: string
+      params:
+        type: object
+      options:
+        type: object
+  search_metadata:
+    type: object
+    properties:
+      relevanceScore:
+        type: number
+  search_paging:
+    type: object
+    properties:
+      pageNumber:
+        type: integer
+      pageSize:
+        type: integer
+  search_sorting:
+    type: object
+    required:
+    - type
+    properties:
+      type:
+        type: string
+      order:
+        type: integer
+tags: []

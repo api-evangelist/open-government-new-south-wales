@@ -1,0 +1,30 @@
+name: Open Government, New South Wales pricing
+generated: '2026-10-21'
+method: searched
+source: https://api.nsw.gov.au/Product/Index/22
+audience: developer-api
+pricing_basis: tiered-subscription
+published: false
+plan_count: 2
+delivery:
+  delivery: managed
+plans:
+- name: Free
+  description: standard APIs
+  price_text: Free
+  price: 0
+  features:
+  - standard APIs
+  limits:
+  - 2500 calls / month
+- name: Premium
+  description: standard / custom APIs, 24/7 email / phone support, custom service licensing agreement
+  price_text: Contact us
+  price: Contact us
+  features:
+  - standard / custom APIs
+  - 24/7 email / phone support
+  - custom service licensing agreement
+  limits:
+  - custom calls / month
+note: Table titled "Rates for API calls" on each API product page (also https://api.nsw.gov.au/Product/Index/20). No numeric price is published; Premium is by agreement.

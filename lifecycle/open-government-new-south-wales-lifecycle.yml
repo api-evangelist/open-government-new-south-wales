@@ -1,0 +1,15 @@
+generated: '2026-10-21'
+method: searched
+source: https://api.nsw.gov.au/Product/Index/22
+versioning:
+  scheme: URI path major version (/FuelPriceCheck/v1, /FuelPriceCheck/v2)
+  text: V1 endpoints can be used for fetching NSW fuel price, V2 endpoints can be used for fetching NSW & Tasmania fuel prices combined.
+  portal_version: '1.0'
+  portal_updated: '2020-10-08'
+deprecation:
+  policy: null
+  note: No deprecation or sunset policy is published; v1 and v2 are both listed as live. No operations are marked deprecated in the contract.
+sla:
+  text: Premium 24/7 email / phone support (by service licensing agreement). The Terms state the NSW Government cannot ensure services are provided at all times or error-free.
+  source: https://api.nsw.gov.au/Home/Terms
+status_page: null

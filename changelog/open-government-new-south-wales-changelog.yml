@@ -1,0 +1,12 @@
+generated: '2026-10-21'
+method: searched
+source: https://api.nsw.gov.au/Product/Index/22
+scheme: major version in path (v1, v2)
+current_version: '1.0'
+entries:
+- version: '1.0'
+  date: '2016-10-21'
+  breaking: false
+  highlights:
+  - Product portal launched
+note: The "Release notes / Recent API Changes" table on the Fuel API page holds one row. The page header says "Version 1.0 Updated 08-October-2020" while the contract file is info.version 2.0.05 and adds v2 endpoints (NSW + Tasmania) that are not in the release notes.

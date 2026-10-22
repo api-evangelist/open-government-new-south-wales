@@ -1,0 +1,11 @@
+generated: '2026-10-21'
+method: searched
+source: https://api.nsw.gov.au/Product/Index/22
+docs: https://api.nsw.gov.au/Product/Index/22
+description: Each API product page has a "Try this API" panel publishing a shared trial API Key, API Secret and ready-made Basic Authorization header so the API can be called before registering. "There is a limit of 5 calls every minute or alternatively register and subscribe to increase your API usage." The trial calls hit the production host (no separate sandbox environment is documented).
+modes:
+- name: trial
+  credentials: shared trial key/secret published on each product page (not copied here; read them from the page)
+  limit_text: There is a limit of 5 calls every minute
+environments:
+- https://api.onegov.nsw.gov.au

@@ -1,0 +1,17 @@
+generated: '2026-10-21'
+method: searched
+source: https://api.nsw.gov.au/Product/Index/22
+docs: https://api.nsw.gov.au/Support
+schemes:
+- type: oauth2
+  flow: clientCredentials
+  tokenUrl: https://api.onegov.nsw.gov.au/oauth/client_credential/accesstoken?grant_type=client_credentials
+  credential_exchange: HTTP Basic header carrying base64 of "Key:Secret"
+  token_lifetime_text: an authorisation token that would last approximately 12 hours from the time when request was made
+  token_usage: Authorization Bearer header on every subsequent request
+- type: apiKey
+  in: header
+  name: apikey
+  description: API key sent alongside the bearer token on each data call (spec header parameter apikey)
+description: API NSW generates API keys for APIs and enables authentication to your APIs using policies. Credential pairs consisting of consumer key and secret are provisioned to clients and stored for future validation. Apps must be approved by an api.nsw administrator before keys are usable.
+note: The contract declares no securitySchemes; the token operation (OauthClientCredentialAccesstokenGet, GET /oauth/client_credential/accesstoken) and the Authorization/apikey header parameters are in openapi/open-government-new-south-wales-fuel-openapi.yml. Not probed.

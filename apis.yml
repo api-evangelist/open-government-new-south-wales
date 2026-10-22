@@ -1,4 +1,5 @@
 aid: open-government-new-south-wales
+
 deliveryModel:
   model: unknown
   open_source: false
@@ -10,6 +11,7 @@ deliveryModel:
   - none
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: unknown
@@ -21,38 +23,314 @@ accessModel:
   source: []
   generated: '2026-07-22'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/open-government-new-south-wales.png
+
 name: Open Government, New South Wales
-description: "New South Wales Government Open Data"
+
+description: API.NSW (api.nsw.gov.au) is the New South Wales Government's API portal,
+  originally developed by the NSW Department of Finance, Services and Innovation and
+  now operated under the Department of Customer Service. It gives developers, researchers
+  and other parties a catalogue of government APIs - such as the Fuel API with live
+  prices for 2,500+ NSW fuel stations, the Security licence API and the Register of
+  Pharmacies - with free sign-up for API access, alongside the related open data portal
+  data.nsw.gov.au.
+
 url: https://api.nsw.gov.au/
+
 specificationVersion: '0.23'
+
 created: '2026-05-28'
-modified: '2026-05-28'
+
+modified: '2026-10-21'
+
 x-source: public-apis/public-apis
-x-category: "Government"
+
+x-category: Government
+
 x-tier: 3
+
 x-tier-reason: bulk-registered-from-public-apis
+
 tags:
-  - Government
-  - Public APIs
-apis:
-  - name: Open Government, New South Wales
-    description: "New South Wales Government Open Data"
-    humanURL: https://api.nsw.gov.au/
-    tags:
-      - Government
-    properties:
-      - type: Documentation
-        url: https://api.nsw.gov.au/
-common:
-  - type: VulnerabilityDisclosure
-    url: security/open-government-new-south-wales-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/open-government-new-south-wales-domain-security.yml
-  - type: Website
-    url: https://api.nsw.gov.au/
-  - type: PublicAPIsListing
-    url: https://github.com/public-apis/public-apis
+- Government
+- Public APIs
+- Open Data
+- Australia
+- New South Wales
+- Public Sector
+- Fuel Prices
+
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+
+common:
+- type: AgenticAccess
+  url: agentic-access/open-government-new-south-wales-agentic-access.yml
+- type: RateLimits
+  url: rate-limits/open-government-new-south-wales-rate-limits.yml
+- type: Plans
+  url: plans/open-government-new-south-wales-plans-pricing.yml
+- type: Spectral
+  url: rules/open-government-new-south-wales-rules.yml
+- type: Vocabulary
+  url: vocabulary/open-government-new-south-wales-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/open-government-new-south-wales-data-model.yml
+- type: ChangeLog
+  url: changelog/open-government-new-south-wales-changelog.yml
+- type: Conventions
+  url: conventions/open-government-new-south-wales-conventions.yml
+- type: Sandbox
+  url: sandbox/open-government-new-south-wales-sandbox.yml
+- type: Security
+  url: security/open-government-new-south-wales-vulnerability-disclosure.yml
+- type: Authentication
+  url: authentication/open-government-new-south-wales-authentication.yml
+- type: Lifecycle
+  url: lifecycle/open-government-new-south-wales-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/open-government-new-south-wales-problem-types.yml
+- type: Conformance
+  url: conformance/open-government-new-south-wales-conformance.yml
+- type: Overlay
+  url: overlays/open-government-new-south-wales-fuel-overlay.yaml
+- type: Hosts
+  url: hosts/open-government-new-south-wales-hosts.yml
+- type: Vendors
+  url: vendors/open-government-new-south-wales-vendors.yml
+- type: VulnerabilityDisclosure
+  url: security/open-government-new-south-wales-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/open-government-new-south-wales-domain-security.yml
+- type: Website
+  url: https://api.nsw.gov.au/
+- type: PublicAPIsListing
+  url: https://github.com/public-apis/public-apis
+- type: DeveloperPortal
+  url: https://api.nsw.gov.au/
+- type: Support
+  url: https://api.nsw.gov.au/Support
+- type: TermsOfService
+  url: https://api.nsw.gov.au/Home/Terms
+- type: PrivacyPolicy
+  url: https://api.nsw.gov.au/Home/Privacy
+- type: SignUp
+  url: https://api.nsw.gov.au/Account/Register
+- type: Login
+  url: https://api.nsw.gov.au/Account/Login
+- type: About
+  url: https://api.nsw.gov.au/Home/About
+- type: OpenData
+  url: https://data.nsw.gov.au/
+
+apis:
+- name: Open Government, New South Wales
+  description: >-
+    API.NSW (api.nsw.gov.au) is the New South Wales Government's API portal, originally developed by the
+    NSW Department of Finance, Services and Innovation and now operated under the Department of Customer
+    Service. It gives developers, researchers and other parties a catalogue of government APIs - such
+    as the Fuel API with live prices for 2,500+ NSW fuel stations, the Security licence API and the Register
+    of Pharmacies - with free sign-up for API access, alongside the related open data portal data.nsw.gov.au.
+  humanURL: https://api.nsw.gov.au/
+  tags:
+  - Government
+  properties:
+  - type: Documentation
+    url: https://api.nsw.gov.au/
+  - type: APIReference
+    url: https://api.nsw.gov.au/ProductCatalogue?apiCategoryId=0
+  - type: GettingStarted
+    url: https://api.nsw.gov.au/support/buildapps
+  aid: open-government-new-south-wales:open-government-new-south-wales
+  baseURL: https://api.onegov.nsw.gov.au
+- aid: open-government-new-south-wales:open-government-new-south-wales-browse-api
+  name: Open Government, New South Wales Browse API
+  description: The Browse API from Open Government, New South Wales — 5 operation(s) for browse.
+  humanURL: https://api.nsw.gov.au/
+  baseURL: https://api.onegov.nsw.gov.au
+  tags:
+  - Browse
+  properties:
+  - type: OpenAPI
+    url: openapi/open-government-new-south-wales-browse-api-openapi.yml
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/20
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/22
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/24
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/25
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/30
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/36
+- aid: open-government-new-south-wales:open-government-new-south-wales-details-api
+  name: Open Government, New South Wales Details API
+  description: The Details API from Open Government, New South Wales — 5 operation(s) for details.
+  humanURL: https://api.nsw.gov.au/
+  baseURL: https://api.onegov.nsw.gov.au
+  tags:
+  - Details
+  properties:
+  - type: OpenAPI
+    url: openapi/open-government-new-south-wales-details-api-openapi.yml
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/20
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/22
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/24
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/25
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/30
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/36
+- aid: open-government-new-south-wales:open-government-new-south-wales-fuelcheckrefdata-api
+  name: Open Government, New South Wales Fuel Check Ref Data API
+  description: >-
+    The FuelCheckRefData API from Open Government, New South Wales — 2 operation(s) for fuelcheckrefdata.
+  humanURL: https://api.nsw.gov.au/
+  baseURL: https://api.onegov.nsw.gov.au
+  tags:
+  - FuelCheckRefData
+  properties:
+  - type: OpenAPI
+    url: openapi/open-government-new-south-wales-fuelcheckrefdata-api-openapi.yml
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/20
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/22
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/24
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/25
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/30
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/36
+- aid: open-government-new-south-wales:open-government-new-south-wales-fuelpricecheck-api
+  name: Open Government, New South Wales Fuel Price Check API
+  description: >-
+    The FuelPriceCheck API from Open Government, New South Wales — 10 operation(s) for fuelpricecheck.
+  humanURL: https://api.nsw.gov.au/
+  baseURL: https://api.onegov.nsw.gov.au
+  tags:
+  - FuelPriceCheck
+  properties:
+  - type: OpenAPI
+    url: openapi/open-government-new-south-wales-fuelpricecheck-api-openapi.yml
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/20
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/22
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/24
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/25
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/30
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/36
+- aid: open-government-new-south-wales:open-government-new-south-wales-pharmacyregister-api
+  name: Open Government, New South Wales Pharmacyregister API
+  description: >-
+    The Pharmacyregister API from Open Government, New South Wales — 2 operation(s) for pharmacyregister.
+  humanURL: https://api.nsw.gov.au/
+  baseURL: https://api.onegov.nsw.gov.au
+  tags:
+  - Pharmacyregister
+  properties:
+  - type: OpenAPI
+    url: openapi/open-government-new-south-wales-pharmacyregister-api-openapi.yml
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/20
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/22
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/24
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/25
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/30
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/36
+- aid: open-government-new-south-wales:open-government-new-south-wales-security-api
+  name: Open Government, New South Wales Security API
+  description: The Security API from Open Government, New South Wales — 1 operation(s) for security.
+  humanURL: https://api.nsw.gov.au/
+  baseURL: https://api.onegov.nsw.gov.au
+  tags:
+  - Security
+  properties:
+  - type: OpenAPI
+    url: openapi/open-government-new-south-wales-security-api-openapi.yml
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/20
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/22
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/24
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/25
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/30
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/36
+- aid: open-government-new-south-wales:open-government-new-south-wales-verify-api
+  name: Open Government, New South Wales Verify API
+  description: The Verify API from Open Government, New South Wales — 5 operation(s) for verify.
+  humanURL: https://api.nsw.gov.au/
+  baseURL: https://api.onegov.nsw.gov.au
+  tags:
+  - Verify
+  properties:
+  - type: OpenAPI
+    url: openapi/open-government-new-south-wales-verify-api-openapi.yml
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/20
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/22
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/24
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/25
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/30
+  - type: Documentation
+    url: https://api.nsw.gov.au/Product/Index/36
+x-coverage:
+  state: covered
+  reason: identity-verified
+  detail: Website api.nsw.gov.au self-identifies as "api.nsw | welcome to api.nsw",
+    a NSW Government website; About page names NSW Department of Finance, Services
+    and Innovation; footer Department of Customer Service. /Showcase and /support/buildapis
+    return an error page and were not added.
+  evidence:
+  - url: https://api.nsw.gov.au/
+    status: 200
+  - url: https://api.nsw.gov.au/Home/About
+    status: 200
+  - url: https://api.nsw.gov.au/ProductCatalogue?apiCategoryId=0
+    status: 200
+  - url: https://api.nsw.gov.au/support/buildapps
+    status: 200
+  - url: https://api.nsw.gov.au/Support
+    status: 200
+  - url: https://api.nsw.gov.au/Home/Terms
+    status: 200
+  - url: https://api.nsw.gov.au/Home/Privacy
+    status: 200
+  - url: https://data.nsw.gov.au/
+    status: 200
+x-enrichment:
+  date: '2026-10-21'
+  status: enriched
+  artifacts_added: 36
+  pass: modular-v1
+  engine: identity=anthropic,contract=anthropic,surfaces=anthropic,docs=anthropic,regulatory=anthropic

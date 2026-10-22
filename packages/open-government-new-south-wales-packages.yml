@@ -1,0 +1,5 @@
+generated: '2026-10-21'
+method: none
+source: https://api.nsw.gov.au/Product/Index/22
+packages: []
+note: No first-party SDK or client library is linked from the API.NSW portal (support/buildapps, Support, Fuel and Property product pages); the docs point to a Postman collection instead. npm and PyPI lookups for fuel-nsw / nsw-fuel / nswfuel returned 404.

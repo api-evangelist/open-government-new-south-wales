@@ -1,0 +1,35 @@
+generated: '2026-10-21'
+method: searched
+source: https://api.nsw.gov.au/Product/Index/22
+auth:
+  style: OAuth2 client-credentials bearer token (~12 hours) plus apikey header
+  see: authentication/open-government-new-south-wales-authentication.yml
+request_headers:
+- name: apikey
+- name: Authorization
+- name: transactionid
+  description: required header on data calls (client-supplied transaction id, from the contract)
+- name: requesttimestamp
+  description: required header on data calls (from the contract)
+- name: if-modified-since
+  description: required header on data calls (from the contract)
+request_id:
+  header: transactionid
+  direction: client-supplied
+pagination:
+  style: none
+  note: No pagination parameters; the "Get All New Prices" endpoints return only prices submitted since the last prices or prices/new call made with the same apikey on the current day (delta feed).
+versioning:
+  see: lifecycle/open-government-new-south-wales-lifecycle.yml
+rate_limits:
+  see: rate-limits/open-government-new-south-wales-rate-limits.yml
+  signaling: undocumented
+idempotency:
+  coverage: na
+  note: The POST operations (prices/nearby, prices/location) are read-only queries; the API has no write surface.
+reversibility:
+  status: na
+  note: Read-only API (fuel price lookups); nothing to reverse.
+dry_run_mode: na
+errors:
+  note: Contract declares 400, 401 and 500 responses on every data operation; no error reference page is published.

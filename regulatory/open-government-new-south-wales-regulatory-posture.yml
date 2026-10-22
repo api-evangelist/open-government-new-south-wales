@@ -1,0 +1,57 @@
+generated: '2026-10-21'
+method: searched
+probe: true
+source: https://api.nsw.gov.au/Home/Privacy
+pages_read:
+- url: https://api.nsw.gov.au/Home/Privacy
+  http_status: 200
+  title: API.NSW Privacy Collection Notice
+- url: https://api.nsw.gov.au/Home/Terms
+  http_status: 200
+  title: Terms
+signals:
+  data_subject_request:
+    url: https://api.nsw.gov.au/Home/Privacy
+    section: Your rights
+    channel: Privacy, Government Technology Platforms (Digital.NSW), Level 23/2-24 Rawson Place, Haymarket NSW 2000 (email address published on the page)
+    rights_named: [access, correction]
+    evidence:
+    - source: https://api.nsw.gov.au/Home/Privacy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: >-
+        Subject to certain conditions, you have the following rights in relation to your personal information:
+        The right to request access to your personal information The right to request correction of your
+        personal information If you wish to invoke any of the above rights, please contact us using the details below.
+    note: >-
+      API.NSW's privacy collection notice names two data-subject rights, access and correction, and says to
+      exercise them through the Digital.NSW Privacy team. It names no deletion or portability right and gives no
+      response time. Its legal basis is NSW privacy law, through the Department of Customer Service Privacy
+      Management Plan, not the GDPR.
+  data_retention:
+    url: https://api.nsw.gov.au/Home/Privacy
+    section: How long we keep information for
+    evidence:
+    - source: https://api.nsw.gov.au/Home/Privacy
+      http_status: 200
+      fetched: '2026-10-21'
+      quote: >-
+        We will only keep information for as long as we need it to fulfil the purposes, we collected it for.
+        After which, the information will be disposed of securely in accordance with the State Records Act 1998,
+        and any other applicable legislation.
+    note: >-
+      A purpose-limited retention statement that relies on the NSW State Records Act 1998 for disposal. It gives
+      no fixed retention period.
+not_addressed:
+- subprocessors
+- data_residency
+- incident_notification
+- ai_transparency
+- accessibility_conformance
+notes: >-
+  The pre-flight dossier had no legal_pages, so both pages were fetched directly from links in the
+  api.nsw.gov.au footer. The Terms page sets service availability, credential handling and NSW governing law,
+  but it covers none of the catalog's regulatory signals. Its password-breach clause puts the duty to report
+  on the user, so it is not a provider incident-notification commitment. The privacy notice says it is
+  "available in large font and other accessible mediums, if required". That is an offer of accessible
+  formats, not an accessibility conformance claim, so it is not recorded as one.

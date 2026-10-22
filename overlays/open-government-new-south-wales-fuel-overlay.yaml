@@ -1,0 +1,52 @@
+overlay: 1.0.0
+info:
+  title: Open Government, New South Wales Fuel API overlay (API Evangelist)
+  version: 1.0.0
+  x-generated: '2026-10-21'
+  x-method: generated
+extends: ../openapi/_original/open-government-new-south-wales-fuel-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-provider: open-government-new-south-wales
+    x-portal: https://api.nsw.gov.au/Product/Index/22
+- target: $.paths['/FuelCheckRefData/v1/fuel/lovs'].get
+  update:
+    operationId: getFuelReferenceDataV1
+- target: $.paths['/FuelCheckRefData/v2/fuel/lovs'].get
+  update:
+    operationId: getFuelReferenceDataV2
+- target: $.paths['/FuelPriceCheck/v1/fuel/prices/location'].post
+  update:
+    operationId: getFuelPricesForLocationV1
+    x-read-only: true
+- target: $.paths['/FuelPriceCheck/v2/fuel/prices/location'].post
+  update:
+    operationId: getFuelPricesForLocationV2
+    x-read-only: true
+- target: $.paths['/FuelPriceCheck/v1/fuel/prices/nearby'].post
+  update:
+    operationId: getFuelPricesNearbyV1
+    x-read-only: true
+- target: $.paths['/FuelPriceCheck/v2/fuel/prices/nearby'].post
+  update:
+    operationId: getFuelPricesNearbyV2
+    x-read-only: true
+- target: $.paths['/FuelPriceCheck/v1/fuel/prices'].get
+  update:
+    operationId: getAllFuelPricesV1
+- target: $.paths['/FuelPriceCheck/v2/fuel/prices'].get
+  update:
+    operationId: getAllFuelPricesV2
+- target: $.paths['/FuelPriceCheck/v1/fuel/prices/new'].get
+  update:
+    operationId: getNewFuelPricesV1
+- target: $.paths['/FuelPriceCheck/v2/fuel/prices/new'].get
+  update:
+    operationId: getNewFuelPricesV2
+- target: $.paths['/FuelPriceCheck/v1/fuel/prices/station/{stationCode}'].get
+  update:
+    operationId: getStationFuelPricesV1
+- target: $.paths['/FuelPriceCheck/v2/fuel/prices/station/{stationCode}'].get
+  update:
+    operationId: getStationFuelPricesV2

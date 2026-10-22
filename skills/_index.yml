@@ -1,0 +1,10 @@
+name: Open Government, New South Wales agent skills
+generated: '2026-10-21'
+method: generated
+source:
+- openapi/open-government-new-south-wales-fuel-openapi.yml
+skills:
+- name: fuel-price-lookup
+  file: skills/open-government-new-south-wales-fuel-price-lookup.md
+  api: openapi/open-government-new-south-wales-fuel-openapi.yml
+  operations: [OauthClientCredentialAccesstokenGet]

@@ -1,0 +1,26 @@
+name: Open Government, New South Wales rate limits
+generated: '2026-10-21'
+method: searched
+source: https://api.nsw.gov.au/Product/Index/22
+limit_count: 3
+limits:
+- name: Try-this-API trial credentials
+  limit_text: There is a limit of 5 calls every minute
+  max: 5
+  window: 1 minute
+  scope: shared trial key published on each API product page
+  plan: trial
+- name: Free account quota
+  limit_text: Free 2500 calls / month
+  max: 2500
+  window: 1 month
+  scope: per API consumer
+  plan: Free
+- name: Premium account quota
+  limit_text: Premium custom calls / month
+  window: 1 month
+  scope: per API consumer
+  plan: Premium
+policy_text: Every API consumer will be limited to a number of requests based on their agreement.
+headers: []
+note: The same table appears on the Property API page (https://api.nsw.gov.au/Product/Index/20). The docs do not document rate-limit response headers or the status code on exhaustion. "Get All Prices" carries "There may be restrictions on how often this API request can be made." Quota changes are requested through the Support form (https://api.nsw.gov.au/Support).
