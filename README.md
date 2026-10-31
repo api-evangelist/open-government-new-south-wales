@@ -1,4 +1,4 @@
-# Open Government, New South Wales (open-government-new-south-wales)
+# Open Government, New South Wales
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,28 +64,126 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-New South Wales Government Open Data
+API.NSW (api.nsw.gov.au) is the New South Wales Government's API portal, originally developed by the NSW Department of Finance, Services and Innovation and now operated under the Department of Customer Service. It gives developers, researchers and other parties a catalogue of government APIs - such as the Fuel API with live prices for 2,500+ NSW fuel stations, the Security licence API and the Register of Pharmacies - with free sign-up for API access, alongside the related open data portal data.nsw.gov.au.
 
-**APIs.yml:** [apis.yml](apis.yml)
+**Areas:** Government · Public APIs · Open Data · Australia · New South Wales · Public Sector · Fuel Prices
 
-## Type
-- **x-type:** company
-- **x-tier:** 3 (bulk-registered from public-apis)
-- **source:** [public-apis/public-apis](https://github.com/public-apis/public-apis) — category: Government
+## Open Government, New South Wales on APIs.io
 
-## API
-- **Open Government, New South Wales** — [Documentation](https://api.nsw.gov.au/)
+Everything profiled for Open Government, New South Wales is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/open-government-new-south-wales/](https://apis.io/providers/open-government-new-south-wales/)** — or go straight to one of the APIs or properties below.
 
-## Tags
-Government, Public APIs
+### APIs (8)
 
-## Notes
-This entry was bulk-registered as part of a public-apis catalog sweep on 2026-05-28.
-A real OpenAPI artifact will be added during a follow-up enrichment pass if the provider publishes one.
+- [Open Government, New South Wales](https://apis.io/apis/open-government-new-south-wales/open-government-new-south-wales/) — API.NSW (api.nsw.gov.au) is the New South Wales Government's API portal, originally developed by the NSW Department of Finance, Services and Innovation and…
+- [Open Government, New South Wales Browse API](https://apis.io/apis/open-government-new-south-wales/open-government-new-south-wales-browse-api/) — The Browse API from Open Government, New South Wales — 5 operation(s) for browse.
+- [Open Government, New South Wales Details API](https://apis.io/apis/open-government-new-south-wales/open-government-new-south-wales-details-api/) — The Details API from Open Government, New South Wales — 5 operation(s) for details.
+- [Open Government, New South Wales Fuel Check Ref Data API](https://apis.io/apis/open-government-new-south-wales/open-government-new-south-wales-fuelcheckrefdata-api/) — The FuelCheckRefData API from Open Government, New South Wales — 2 operation(s) for fuelcheckrefdata.
+- [Open Government, New South Wales Fuel Price Check API](https://apis.io/apis/open-government-new-south-wales/open-government-new-south-wales-fuelpricecheck-api/) — The FuelPriceCheck API from Open Government, New South Wales — 10 operation(s) for fuelpricecheck.
+- [Open Government, New South Wales Pharmacyregister API](https://apis.io/apis/open-government-new-south-wales/open-government-new-south-wales-pharmacyregister-api/) — The Pharmacyregister API from Open Government, New South Wales — 2 operation(s) for pharmacyregister.
+- [Open Government, New South Wales Security API](https://apis.io/apis/open-government-new-south-wales/open-government-new-south-wales-security-api/) — The Security API from Open Government, New South Wales — 1 operation(s) for security.
+- [Open Government, New South Wales Verify API](https://apis.io/apis/open-government-new-south-wales/open-government-new-south-wales-verify-api/) — The Verify API from Open Government, New South Wales — 5 operation(s) for verify.
 
-## Timestamps
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-28
+### Published properties
 
-## Maintainers
-- **Kin Lane** — kin@apievangelist.com
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Open Government New South Wales Agentic Access](https://apis.io/agentic-access/open-government-new-south-wales/open-government-new-south-wales-agentic-access/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Open Government New South Wales Fuel Overlay](https://apis.io/overlays/open-government-new-south-wales/open-government-new-south-wales-fuel-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Open Government, New South Wales API Rules](https://apis.io/rules/open-government-new-south-wales/open-government-new-south-wales-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Open Government New South Wales Authentication](https://apis.io/security/open-government-new-south-wales/open-government-new-south-wales-authentication/)
+- [Open Government New South Wales Domain Security](https://apis.io/security/open-government-new-south-wales/open-government-new-south-wales-domain-security/)
+- [Open Government New South Wales Vulnerability Disclosure](https://apis.io/security/open-government-new-south-wales/open-government-new-south-wales-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Open Government New South Wales Plans Pricing](https://apis.io/plans/open-government-new-south-wales/open-government-new-south-wales-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Open Government New South Wales Rate Limits](https://apis.io/rate-limits/open-government-new-south-wales/open-government-new-south-wales-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://api.nsw.gov.au/)
+- [Sign up](https://api.nsw.gov.au/Account/Register)
+- [Support](https://api.nsw.gov.au/Support)
+- [Terms of service](https://api.nsw.gov.au/Home/Terms)
+- [Privacy policy](https://api.nsw.gov.au/Home/Privacy)
+
+## API Evangelist rating
+
+**Kin Score 61.3** — strong · rubric 0.24.0 · scored 2026-10-21
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 39.9 |
+| Contract governance | 79.1 |
+| Operational transparency | 54.7 |
+| Developer ergonomics | 68.3 |
+| Access clarity | 53.2 |
+
+**Agent readiness 39.4** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | unknown |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | unknown |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 30.4** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/open-government-new-south-wales/](https://apis.io/providers/open-government-new-south-wales/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Open Government, New South Wales: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/open-government-new-south-wales/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
